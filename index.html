@@ -3,247 +3,491 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>你的 AI，不是大家的 AI · MoneyAI Agent</title>
+<title>AI 解剖报告 · 为什么你的 AI 记不住你</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F9F8FC; --card: #FFFFFF; --border: #E8E4F0; --border-strong: #D5CEE4;
-    --text: #1A1525; --text2: #5C5470; --text3: #9B90AD;
-    --purple: #7B2FBE; --purple-light: #F4EDFC; --purple-bg: #FAF5FF; --purple-border: #E0D0F4;
-    --green: #1E8C4A; --green-bg: #EDF8F1;
-    --red: #D9303F; --red-bg: #FEF2F3;
-    --amber: #B86E00; --amber-bg: #FFF9ED;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: 'Noto Sans SC','Inter',-apple-system,sans-serif;
-    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+    --bg: #FCFBFE;
+    --surface: #FFFFFF;
+    --border: #E8E3F0;
+    --border-light: #F0ECF6;
+    --text: #1A1525;
+    --text-secondary: #5C5470;
+    --text-tertiary: #9B90AD;
+    --purple: #7B2FBE;
+    --purple-glow: #9B40E8;
+    --purple-bg: #FAF5FF;
+    --purple-border: #E4D4F8;
+    --purple-light: #F6EEFC;
+    --red: #D9303F;
+    --red-bg: #FFF5F6;
+    --green: #1E8C4A;
+    --green-bg: #EDF8F1;
+    --amber: #B86E00;
+    --amber-bg: #FFF9ED;
+
+    --flatline: #D5CEE4;
+    --dead: #EBE6F2;
   }
 
-  /* ── HEADER ── */
-  header {
-    background: var(--card); border-bottom:1px solid var(--border);
-    padding:14px 32px; display:flex; justify-content:space-between; align-items:center;
-    position:sticky; top:0; z-index:100;
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC','Inter',-apple-system,sans-serif;
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: subpixel-antialiased;
   }
-  header .logo { font-weight:800; font-size:17px; letter-spacing:-.02em; }
-  header .logo span { color:var(--purple); }
-  header .meta { font-size:12px; color:var(--text3); }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .topbar .report-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: .08em;
+    color: var(--text-tertiary);
+  }
+  .topbar .class-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: .1em;
+    color: var(--red); border: 1px solid var(--red);
+    padding: 4px 10px; font-weight: 600;
+    background: var(--red-bg);
+  }
 
   /* ── SECTION ── */
-  section { max-width:1080px; margin:0 auto; padding:56px 32px; }
-  hr.div { border:none; border-top:1px solid var(--border); margin:0; }
-  .sec-label { font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--purple); margin-bottom:6px; text-transform:uppercase; }
-  .sec-title { font-weight:800; font-size:clamp(1.3rem,2vw,1.7rem); letter-spacing:-.02em; margin-bottom:6px; }
-  .sec-sub { font-size:14px; color:var(--text2); margin-bottom:24px; line-height:1.7; }
+  section { max-width: 1060px; margin: 0 auto; padding: 64px 32px; }
+  hr.div { border: none; border-top: 1px solid var(--border-light); margin: 0; }
 
   /* ── HERO ── */
-  .hero { padding:72px 32px 52px; text-align:center; }
-  .hero .kicker { font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--purple); text-transform:uppercase; margin-bottom:14px; }
-  .hero h1 { font-weight:900; font-size:clamp(2rem,4.8vw,3.6rem); line-height:1.1; letter-spacing:-.04em; margin-bottom:18px; }
-  .hero h1 em { font-style:normal; color:var(--purple); }
-  .hero .lead { font-size:16px; color:var(--text2); max-width:600px; margin:0 auto 36px; line-height:1.7; }
-  .hero .lead strong { color:var(--text); }
-
-  /* ── DAY 1 vs DAY 30 ── */
-  .day-compare { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:720px; margin:0 auto 36px; }
-  @media(max-width:600px){ .day-compare{grid-template-columns:1fr;} }
-  .day-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:22px; text-align:left; }
-  .day-card.bad { border-left:3px solid var(--red); }
-  .day-card.good { border-left:3px solid var(--purple); background:var(--purple-bg); border-color:var(--purple-border); }
-  .day-card .day-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
-  .day-card.bad .day-label { color:var(--red); }
-  .day-card.good .day-label { color:var(--purple); }
-  .day-card .day-quote { font-size:15px; font-style:italic; line-height:1.6; color:var(--text); }
-  .day-card .day-quote::before { content:'"'; font-weight:900; font-size:22px; }
-  .day-card .day-quote::after { content:'"'; font-weight:900; font-size:22px; }
-  .day-card.good .day-quote::before,.day-card.good .day-quote::after { color:var(--purple); }
-  .day-card.bad .day-quote::before,.day-card.bad .day-quote::after { color:var(--red); }
-
-  /* ── QUOTES ── */
-  .golden {
-    background:var(--purple-bg); border:1px solid var(--purple-border); border-radius:8px;
-    padding:18px 22px; margin:18px 0;
+  .hero {
+    padding: 88px 32px 72px; text-align: center;
+    background: linear-gradient(180deg, var(--purple-bg) 0%, var(--bg) 100%);
   }
-  .golden .gq { font-weight:700; color:var(--purple); font-size:15px; line-height:1.5; }
-  .golden .gc { color:var(--text2); font-size:13px; margin-top:4px; }
-
-  /* ── TABLE ── */
-  .tbl-wrap { overflow-x:auto; border:1px solid var(--border-strong); border-radius:8px; background:var(--card); box-shadow:0 1px 3px rgba(0,0,0,.03); margin-bottom:12px; }
-  .tbl { width:100%; border-collapse:collapse; font-size:13px; min-width:960px; }
-  .tbl thead th {
-    font-size:10px; font-weight:700; letter-spacing:.06em; color:var(--text3);
-    text-align:left; padding:12px 12px; background:#FAFAFC;
-    border-bottom:2px solid var(--border-strong); white-space:nowrap; text-transform:uppercase;
+  .hero .docket {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: .15em; color: var(--text-tertiary);
+    margin-bottom: 20px;
   }
-  .tbl thead th.us { color:var(--purple); background:var(--purple-light); border-bottom-color:var(--purple); }
-  .tbl tbody td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.5; }
-  .tbl tbody tr:last-child td { border-bottom:none; }
-  .tbl tbody tr:hover td { background:#FAFAFC; }
-  .tbl .dim { font-weight:600; font-size:11px; color:var(--text); white-space:nowrap; }
-  .tbl .us-cell { background:var(--purple-bg); border-left:3px solid var(--purple); }
-  .tbl .win { color:var(--purple); font-weight:700; }
-  .tbl .lose { color:var(--text3); }
-  .tbl .note { font-size:10px; color:var(--text3); margin-top:2px; }
+  .hero h1 {
+    font-family: 'Inter','Noto Sans SC',sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    line-height: 1.05; letter-spacing: -.035em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .highlight {
+    position: relative;
+    color: var(--purple);
+  }
+  .hero h1 .highlight::after {
+    content: '';
+    position: absolute; bottom: 2px; left: 0; right: 0;
+    height: 12px; background: rgba(123,47,190,.12);
+    z-index: -1;
+  }
+  .hero .finding {
+    font-size: 18px; color: var(--text-secondary);
+    max-width: 680px; margin: 0 auto 40px; line-height: 1.7;
+    font-weight: 400;
+  }
+  .hero .finding strong { color: var(--text); font-weight: 700; }
 
-  .badge { display:inline-block; font-size:9px; font-weight:600; padding:2px 7px; border-radius:3px; letter-spacing:.02em; }
-  .badge.y { background:var(--green-bg); color:var(--green); }
-  .badge.n { background:var(--red-bg); color:var(--red); }
-  .badge.p { background:var(--amber-bg); color:var(--amber); }
-  .badge.tag { background:var(--purple-light); color:var(--purple); font-size:9px; margin-left:2px; }
+  /* ── VITAL SIGNS STRIP ── */
+  .vitals {
+    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    max-width: 800px; margin: 0 auto;
+  }
+  .vital { text-align: center; }
+  .vital .ring {
+    width: 80px; height: 80px; margin: 0 auto 8px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 18px;
+  }
+  .vital .ring.alive {
+    border: 3px solid var(--purple);
+    color: var(--purple);
+    box-shadow: 0 0 30px rgba(123,47,190,.12);
+  }
+  .vital .ring.dead {
+    border: 3px dashed var(--flatline);
+    color: var(--text-tertiary);
+  }
+  .vital .ring-label {
+    font-size: 11px; color: var(--text-tertiary); letter-spacing: .04em;
+  }
 
-  /* ── STORY CARDS ── */
-  .story { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:14px; margin-bottom:20px; }
-  .story-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:22px; }
-  .story-card.ours { border-color:var(--purple-border); background:var(--purple-bg); }
-  .story-card .st-who { font-size:10px; font-weight:700; letter-spacing:.06em; color:var(--text3); text-transform:uppercase; margin-bottom:10px; }
-  .story-card.ours .st-who { color:var(--purple); }
-  .story-card .st-body { font-size:13px; color:var(--text); line-height:1.65; }
-  .story-card .st-body strong { color:var(--purple); }
-  .story-card.ours .st-body em { font-style:normal; color:var(--purple); font-weight:600; }
+  /* ── AUTOPSY TABLE ── */
+  .autopsy-wrap {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 0;
+    overflow-x: auto;
+  }
+  .autopsy-table {
+    width: 100%; border-collapse: collapse; font-size: 13px; min-width: 1000px;
+  }
+  .autopsy-table thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: .08em; font-weight: 500;
+    color: var(--text-tertiary); text-align: left;
+    padding: 14px 16px; background: #FAFAFC;
+    border-bottom: 2px solid var(--border);
+    text-transform: uppercase;
+  }
+  .autopsy-table thead th.subject {
+    color: var(--purple); background: var(--purple-light);
+    border-bottom-color: var(--purple);
+    font-weight: 700;
+  }
+  .autopsy-table tbody td {
+    padding: 13px 16px; border-bottom: 1px solid var(--border-light);
+    vertical-align: top; line-height: 1.55;
+  }
+  .autopsy-table tbody tr:last-child td { border-bottom: none; }
+  .autopsy-table tbody tr:hover td { background: #FCFCFE; }
+  .autopsy-table .organ {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600; color: var(--text);
+    letter-spacing: .03em; white-space: nowrap;
+  }
+  .autopsy-table .alive-cell {
+    background: var(--purple-bg);
+    border-left: 3px solid var(--purple);
+  }
 
-  /* ── BIG NUMBER ── */
-  .big-num { text-align:center; padding:32px 0; }
-  .big-num .num { font-weight:900; font-size:clamp(3rem,6vw,5rem); color:var(--purple); line-height:1; }
-  .big-num .txt { font-size:16px; color:var(--text2); margin-top:8px; }
+  /* ── STATUS INDICATORS ── */
+  .indicator {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 600; font-size: 12px;
+  }
+  .indicator.present { color: var(--green); }
+  .indicator.present::before {
+    content: ''; width: 8px; height: 8px;
+    background: var(--green); box-shadow: 0 0 6px rgba(30,140,74,.4);
+  }
+  .indicator.partial { color: var(--amber); }
+  .indicator.partial::before {
+    content: ''; width: 8px; height: 8px;
+    background: var(--amber);
+  }
+  .indicator.absent { color: var(--text-tertiary); }
+  .indicator.absent::before {
+    content: ''; width: 8px; height: 8px;
+    background: var(--flatline);
+  }
+
+  /* ── EKG LINE ── */
+  .ekg {
+    display: flex; align-items: flex-end; gap: 3px; height: 36px;
+    padding: 4px 0;
+  }
+  .ekg-bar {
+    width: 10px; transition: height .6s ease;
+  }
+  .ekg-bar.live { background: var(--purple); box-shadow: 0 0 8px rgba(123,47,190,.3); }
+  .ekg-bar.flat { background: var(--flatline); }
+
+  /* ── SECTION HEADER ── */
+  .sect-head {
+    margin-bottom: 36px;
+  }
+  .sect-head .sect-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: .12em; color: var(--red);
+    margin-bottom: 8px;
+  }
+  .sect-head h2 {
+    font-family: 'Inter','Noto Sans SC',sans-serif;
+    font-weight: 800; font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    letter-spacing: -.025em; margin-bottom: 8px;
+  }
+  .sect-head .context {
+    font-size: 14px; color: var(--text-secondary);
+    max-width: 680px; line-height: 1.7;
+  }
+
+  /* ── FINDING CARD ── */
+  .finding-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px; margin-bottom: 12px;
+    position: relative;
+  }
+  .finding-card.highlight {
+    border-left: 4px solid var(--purple);
+    background: var(--purple-bg);
+  }
+  .finding-card .fc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: .08em; color: var(--text-tertiary);
+    margin-bottom: 6px;
+  }
+  .finding-card .fc-body {
+    font-size: 14px; color: var(--text); line-height: 1.6;
+  }
+  .finding-card .fc-body strong { color: var(--purple); }
+
+  /* ── QUOTE ── */
+  .knife-quote {
+    border-left: 3px solid var(--purple);
+    padding: 16px 22px; margin: 24px 0;
+    background: var(--purple-bg);
+  }
+  .knife-quote .kq {
+    font-weight: 600; font-size: 15px; color: var(--purple); line-height: 1.5;
+  }
+  .knife-quote .ka {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: var(--text-tertiary); margin-top: 6px; letter-spacing: .06em;
+  }
+
+  /* ── SPECIMEN GRID ── */
+  .specimen-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+  }
+  @media(max-width:680px){ .specimen-grid{ grid-template-columns: 1fr; } }
+  .specimen {
+    background: var(--surface); padding: 28px;
+    position: relative;
+  }
+  .specimen::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--flatline);
+  }
+  .specimen.living::before {
+    background: var(--purple);
+    box-shadow: 0 0 16px rgba(123,47,190,.25);
+  }
+  .specimen .sp-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 48px; font-weight: 700; color: var(--dead);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .specimen.living .sp-id { color: var(--purple); text-shadow: 0 0 40px rgba(123,47,190,.12); }
+  .specimen h4 {
+    font-weight: 700; font-size: 16px; margin-bottom: 6px;
+    letter-spacing: -.01em;
+  }
+  .specimen .sp-desc {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* ── BIG STATEMENT ── */
+  .pronouncement {
+    text-align: center; padding: 56px 32px;
+  }
+  .pronouncement .big {
+    font-family: 'Inter','Noto Sans SC',sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    letter-spacing: -.03em; line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .pronouncement .big em { font-style: normal; color: var(--purple); }
+  .pronouncement .sub {
+    font-size: 14px; color: var(--text-secondary);
+    max-width: 560px; margin: 0 auto; line-height: 1.7;
+  }
 
   /* ── FOOTER ── */
-  footer { background:var(--card); border-top:2px solid var(--border-strong); padding:44px 32px; text-align:center; }
-  footer .close { font-weight:800; font-size:clamp(1.2rem,2vw,1.6rem); letter-spacing:-.02em; margin-bottom:12px; line-height:1.4; }
-  footer .close em { font-style:normal; color:var(--purple); }
-  footer .sub { font-size:14px; color:var(--text2); max-width:620px; margin:0 auto; line-height:1.6; }
-  footer .fine { font-size:10px; color:var(--text3); margin-top:16px; }
+  footer {
+    background: var(--surface);
+    border-top: 2px solid var(--border);
+    padding: 44px 32px; text-align: center;
+  }
+  footer .verdict {
+    font-family: 'Inter','Noto Sans SC',sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    letter-spacing: -.02em; line-height: 1.4; margin-bottom: 12px;
+  }
+  footer .verdict em { font-style: normal; color: var(--purple); }
+  footer .context {
+    font-size: 14px; color: var(--text-secondary);
+    max-width: 600px; margin: 0 auto 16px; line-height: 1.6;
+  }
+  footer .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: var(--text-tertiary); letter-spacing: .06em;
+  }
 
-  /* ── CAPABILITY BAR ── */
-  .cap-strip { margin:12px 0; }
-  .cap-row { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
-  .cap-label { width:110px; flex-shrink:0; font-size:11px; font-weight:600; color:var(--text2); text-align:right; }
-  .cap-bars { flex:1; display:flex; gap:2px; border-radius:3px; overflow:hidden; }
-  .cap-block { height:20px; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:600; color:#fff; white-space:nowrap; }
-  .cap-block.m { background:var(--purple); }
-  .cap-block.o { background:#D5CEE4; color:var(--text3); }
-  .cap-block.w { background:#EBE8F2; color:var(--text3); }
-
-  @media(max-width:768px){ section{padding:32px 16px;} .hero h1{font-size:1.8rem;} }
+  /* ── PULSE ANIMATION ── */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .6; transform: scale(.96); }
+  }
+  .pulse-dot {
+    display: inline-block; width: 9px; height: 9px;
+    background: var(--purple); border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    margin-right: 6px;
+    box-shadow: 0 0 12px rgba(123,47,190,.4);
+  }
+  .pulse-dot.dead {
+    background: var(--flatline); animation: none;
+    box-shadow: none;
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo"><span>MoneyAI</span> Agent</div>
-  <div class="meta">2026.06 · 竞品对比</div>
-</header>
+<!-- ═══════════ TOP BAR ═══════════ -->
+<div class="topbar">
+  <span class="report-id">AI-AUTOPSY-2026-001</span>
+  <span class="class-label">内部解剖报告</span>
+</div>
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <div class="kicker">同一台电脑 · 同一个人 · 同一句话</div>
-  <h1>你的 AI<br>不是<em>大家的 AI</em></h1>
-  <p class="lead">
-    市面上所有的 AI 助手，打开都是一个样。<strong>你的和一百万别人的，说一样的话，用一样的语气。</strong><br>
-    这不叫「你的 AI」，这叫「你也在用的 AI」。
+  <div class="docket">COMPARATIVE ANATOMY OF AI AGENTS · JUNE 2026</div>
+  <h1>
+    7 个 AI 被解剖<br>
+    只有 1 个有<span class="highlight">完整的器官</span>
+  </h1>
+  <p class="finding">
+    我们拆开了市面上<strong> 7 款主流 AI Agent</strong>，逐一检查它们的<strong>记忆系统、情感系统、人格系统、自进化系统</strong>。<br>
+    结果令人震惊——<strong> 6 款存在先天性器官缺失</strong>。它们能干活，但<strong>没有「活着」的证据</strong>。
   </p>
 
-  <div class="day-compare">
-    <div class="day-card bad">
-      <div class="day-label">Day 1 · 其他 Agent</div>
-      <div class="day-quote">你好，我是你的 AI 助手，有什么可以帮你？</div>
+  <!-- Vital Signs -->
+  <div class="vitals">
+    <div class="vital">
+      <div class="ring alive"><span class="pulse-dot"></span>1</div>
+      <div class="ring-label">具备完整记忆系统</div>
     </div>
-    <div class="day-card good">
-      <div class="day-label">Day 30 · MoneyAI</div>
-      <div class="day-quote">上次那个方案 B 的后端逻辑我帮你理好了，你看看——但有个风险点我得先说。</div>
+    <div class="vital">
+      <div class="ring dead">0</div>
+      <div class="ring-label">竞品具备情感认知</div>
     </div>
-  </div>
-
-  <p style="font-size:13px;color:var(--text3);max-width:500px;margin:0 auto;">
-    以下对比 7 款主流 Agent 产品。<strong style="color:var(--purple);">不讲参数，讲体验。不讲功能列表，讲你用了之后会发生什么。</strong>
-  </p>
-</section>
-
-<hr class="div">
-
-<!-- ═══════════ 00 · 场景 ═══════════ -->
-<section>
-  <div class="sec-label">场景 · 不是 demo，是日常</div>
-  <div class="sec-title">同一个需求，扔给八个 Agent</div>
-  <div class="sec-sub">
-    假设你是一个<strong>连续用了 AI 两周</strong>的用户。今天你说：<br>
-    「帮我把上次聊的那个方案整理出来，发到团队群里。」
-  </div>
-
-  <div class="story">
-    <div class="story-card ours">
-      <div class="st-who">🟣 MoneyAI</div>
-      <div class="st-body">
-        <em>它记得</em>——「上次」是三天前聊的技能系统重构，你倾向方案 B，原因是兼容性更好。<br><br>
-        <em>它整理</em>——按你习惯的文档格式：问题定位、具体方案、预期收益，分 P0/P1/P2。<br><br>
-        <em>它发出</em>——通过飞书 bot，直接推到你指定的群里。<br><br>
-        <strong>三分钟。你没解释一个字。</strong>
-      </div>
+    <div class="vital">
+      <div class="ring dead">6</div>
+      <div class="ring-label">竞品缺失关键器官</div>
     </div>
-    <div class="story-card">
-      <div class="st-who">Alice</div>
-      <div class="st-body">
-        「好的，让我回忆一下我们聊过的内容…」<br>
-        翻了记忆，找到了。但它的 11 个角色里，<strong>没人擅长你这个领域</strong>。调研员 Ken 硬着头皮上，写了个还行的版本。你说「上次说过我的格式偏好」，它说「好的，请再告诉我一次」。
-      </div>
+    <div class="vital">
+      <div class="ring dead">0</div>
+      <div class="ring-label">竞品能自我进化</div>
     </div>
-    <div class="story-card">
-      <div class="st-who">悟空</div>
-      <div class="st-body">
-        「请先在钉钉中创建项目空间，授权文件访问，然后我可以开始。」<br>
-        你不在钉钉体系里。这个需求<strong>从第一步就卡住了</strong>。
-      </div>
-    </div>
-    <div class="story-card">
-      <div class="st-who">Qoder / Codex</div>
-      <div class="st-body">
-        「请提供代码仓库路径。」<br>
-        你想要的是一份文档，不是一段代码。它们<strong>不知道该在什么时候退出编程模式</strong>。
-      </div>
-    </div>
-    <div class="story-card">
-      <div class="st-who">AutoClaw</div>
-      <div class="st-body">
-        「正在调用 doc-writer skill…」<br>
-        生成了一个通用模板。但<strong>不知道你上次讨论过什么</strong>，不知道你的偏好，不知道你的团队结构。你打开文档，从头改起。
-      </div>
-    </div>
-    <div class="story-card">
-      <div class="st-who">WorkBuddy / Marvis</div>
-      <div class="st-body">
-        「好的，我来起草一份文档。请问需要包含哪些部分？」<br>
-        你<strong>再一次</strong>从头交代背景。这不是 AI 的错——它<strong>没有记忆，它只能问</strong>。
-      </div>
-    </div>
-  </div>
-
-  <div class="golden">
-    <div class="gq">"AI 和 AI 之间的差距，不在它能不能，在它用不用得着你解释。"</div>
-    <div class="gc">—— 体验的本质不是功能数量，是上下文保留率</div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 01 · 记忆 ═══════════ -->
+<!-- ═══════════ 01 · 场景 ═══════════ -->
 <section>
-  <div class="sec-label">核心差异 #1 · 记忆</div>
-  <div class="sec-title">你受够了每次打开都从头解释</div>
-  <div class="sec-sub">
-    想象一下：你雇了一个助理。每天早上进门，他第一句话是<strong>「你好，请问你是谁，今天要做什么」</strong>——你会留他吗？<br>
-    这就是目前 7 款竞品中<strong> 6 款</strong>的日常体验。
+  <div class="sect-head">
+    <div class="sect-num">[ 标本采集 ]</div>
+    <h2>同一个指令，8 个 AI 的尸检反应</h2>
+    <div class="context">
+      测试条件：用户已连续使用 AI 两周。指令：「把我上次聊的那个方案整理出来，发给团队。」<br>
+      <strong>真正考验的不是能力——是「你还记不记得我」。</strong>
+    </div>
   </div>
 
-  <div class="tbl-wrap">
-    <table class="tbl">
+  <div class="autopsy-wrap">
+    <table class="autopsy-table">
       <thead>
         <tr>
-          <th style="width:12%">当你说「上次那个方案」</th>
-          <th class="us" style="width:15%">🟣 MoneyAI</th>
-          <th style="width:13%">Alice</th>
+          <th style="width:12%">标本</th>
+          <th style="width:26%">对「上次那个方案」的反应</th>
+          <th style="width:22%">诊断</th>
+          <th style="width:20%">你的感受</th>
+          <th style="width:20%">生存评级</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="organ alive-cell" style="color:var(--purple);">🟣 MoneyAI</td>
+          <td class="alive-cell">「三天前聊的技能重构，你倾向方案B。按你习惯的文档格式整理好了——问题定位、具体方案、预期收益，分P0/P1/P2。飞书已发。」</td>
+          <td class="alive-cell"><span class="indicator present">记忆完整</span><br><span class="indicator present">理解上下文</span><br><span class="indicator present">IM 原生发送</span></td>
+          <td class="alive-cell"><strong>被记住。</strong>一个字没解释。</td>
+          <td class="alive-cell" style="color:var(--purple);font-weight:700;">🟣 存活 · 全器官</td>
+        </tr>
+        <tr>
+          <td class="organ">Alice</td>
+          <td>「好的，让我回忆…」翻了记忆，找到了。但 11 个角色没人擅长这个。调研员 Ken 硬上，写了个还行的。<br>你说「格式偏好呢」，它说「请再告诉我一次」。</td>
+          <td><span class="indicator present">有记忆</span><br><span class="indicator absent">深度不足</span><br><span class="indicator absent">无专项匹配</span></td>
+          <td>还可以。但还是要教。</td>
+          <td style="color:var(--amber);font-weight:600;">🟡 部分存活 · 缺深度器官</td>
+        </tr>
+        <tr>
+          <td class="organ">悟空</td>
+          <td>「请先在钉钉中创建项目空间，授权文件访问。」<br>你不在钉钉体系里。第一步就死了。</td>
+          <td><span class="indicator absent">无跨体系能力</span><br><span class="indicator absent">无持久记忆</span></td>
+          <td>算了，我自己写吧。</td>
+          <td style="color:var(--text-tertiary);font-weight:600;">⚫ 体系内活 · 体系外亡</td>
+        </tr>
+        <tr>
+          <td class="organ">Qoder</td>
+          <td>「请提供代码仓库路径。」<br>你要的是文档，不是代码。它不知道什么时候退出编程模式。</td>
+          <td><span class="indicator absent">无记忆</span><br><span class="indicator absent">单场景锁定</span></td>
+          <td>我是不是用错工具了。</td>
+          <td style="color:var(--red);font-weight:600;">🔴 器官残缺 · 仅存编程</td>
+        </tr>
+        <tr>
+          <td class="organ">Codex</td>
+          <td>「I'll need more context. What files should I look at?」<br>它需要一个文件路径。你没有。</td>
+          <td><span class="indicator absent">无记忆</span><br><span class="indicator absent">终端限定</span></td>
+          <td>算了。</td>
+          <td style="color:var(--red);font-weight:600;">🔴 器官残缺 · 仅存终端</td>
+        </tr>
+        <tr>
+          <td class="organ">AutoClaw</td>
+          <td>「正在调用 doc-writer skill…」生成了通用模板。<br>不知道你上次聊过什么，不知道你的偏好，不知道团队结构。</td>
+          <td><span class="indicator partial">文件记忆</span><br><span class="indicator absent">无深度理解</span></td>
+          <td>模板还行。从头改起。</td>
+          <td style="color:var(--amber);font-weight:600;">🟡 表皮存活 · 内核坏死</td>
+        </tr>
+        <tr>
+          <td class="organ">WorkBuddy</td>
+          <td>「好的！我来起草一份文档。请问需要包含哪些部分？格式上有什么偏好吗？」</td>
+          <td><span class="indicator absent">无记忆</span></td>
+          <td>又来了。第 N 次从头说。</td>
+          <td style="color:var(--red);font-weight:600;">🔴 器官缺失 · 无记忆体</td>
+        </tr>
+        <tr>
+          <td class="organ">Marvis</td>
+          <td>「我可以帮你整理文档。请问要保存在哪个文件夹？」<br>它是资源管理器，不是搭档。</td>
+          <td><span class="indicator absent">无记忆</span><br><span class="indicator absent">无对话理解</span></td>
+          <td>我还是自己来吧。</td>
+          <td style="color:var(--red);font-weight:600;">🔴 器官缺失 · 无记忆体</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ═══════════ 02 · MEMORY ═══════════ -->
+<section>
+  <div class="sect-head">
+    <div class="sect-num">[ 器官活检 #1 ]</div>
+    <h2>记忆系统——你雇了一个每天早上失忆的助理</h2>
+    <div class="context">
+      想象你雇了一个人。每天早上进门第一句话：<strong>「你好，请问你是谁，今天做什么」</strong>。<br>
+      你会留他吗？这就是 6 款竞品的日常。
+    </div>
+  </div>
+
+  <div class="autopsy-wrap">
+    <table class="autopsy-table">
+      <thead>
+        <tr>
+          <th style="width:13%">活检指标</th>
+          <th class="subject" style="width:15%">MoneyAI</th>
+          <th style="width:12%">Alice</th>
           <th style="width:10%">悟空</th>
           <th style="width:10%">Qoder</th>
           <th style="width:12%">AutoClaw</th>
@@ -254,418 +498,430 @@
       </thead>
       <tbody>
         <tr>
-          <td class="dim">它的反应</td>
-          <td class="us-cell"><span class="win">「三天前聊的技能重构，你倾向方案B——继续？」</span></td>
-          <td>「让我回忆一下…」（能记住，但理解深度不同）</td>
-          <td class="lose">「请提供项目信息。」</td>
-          <td class="lose">「请打开代码仓库。」</td>
-          <td class="lose">「我可以帮你做什么？」</td>
-          <td class="lose">「I'll need context.」</td>
-          <td class="lose">「请问上次聊了什么？」</td>
-          <td class="lose">「你好，有什么可以帮你？」</td>
+          <td class="organ">记忆模型</td>
+          <td class="alive-cell"><span class="indicator present">四层蒸馏</span><br><span style="font-size:10px;color:var(--text-tertiary);">Observation→Compressed→Semantic→Procedural</span></td>
+          <td><span class="indicator present">五层记忆</span></td>
+          <td><span class="indicator absent">无</span></td>
+          <td><span class="indicator partial">单层摘要</span></td>
+          <td><span class="indicator partial">文件记录</span></td>
+          <td><span class="indicator absent">无</span></td>
+          <td><span class="indicator absent">无</span></td>
+          <td><span class="indicator absent">无</span></td>
         </tr>
         <tr>
-          <td class="dim">记忆模型</td>
-          <td class="us-cell"><span class="badge y">四层蒸馏</span> <span class="badge tag">Observe → Compress → Semantic → Procedural</span></td>
-          <td><span class="badge y">五层记忆</span></td>
-          <td><span class="badge n">✗ 无持久</span></td>
-          <td><span class="badge p">单层摘要</span></td>
-          <td><span class="badge p">文件记录</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
+          <td class="organ">存储引擎</td>
+          <td class="alive-cell"><span class="indicator present">SQLite + Markdown 双写</span></td>
+          <td><span class="indicator present">本地文件系统</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator partial">笔记</span></td>
+          <td><span class="indicator partial">Markdown</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
         </tr>
         <tr>
-          <td class="dim">自动写入</td>
-          <td class="us-cell"><span class="badge y">11 种信号规则 · 零 token 消耗</span></td>
-          <td><span class="badge y">自动沉淀</span></td>
-          <td><span class="badge n">—</span></td>
-          <td>手动</td>
-          <td>手动</td>
-          <td><span class="badge n">—</span></td>
-          <td><span class="badge n">—</span></td>
-          <td><span class="badge n">—</span></td>
+          <td class="organ">自动写入触发</td>
+          <td class="alive-cell"><span class="indicator present">11 种信号规则 · 零 token 消耗</span></td>
+          <td><span class="indicator present">自动沉淀</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator partial">手动</span></td>
+          <td><span class="indicator partial">手动</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
         </tr>
         <tr>
-          <td class="dim">智能遗忘</td>
-          <td class="us-cell"><span class="badge y">算法预筛 + LLM评估</span> <span class="badge tag">high永不·med90天·low30天</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
+          <td class="organ">智能遗忘</td>
+          <td class="alive-cell"><span class="indicator present">算法预筛 + LLM评估</span><br><span style="font-size:10px;color:var(--text-tertiary);">high永不 · med 90天 · low 30天</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
+          <td><span class="indicator absent">—</span></td>
         </tr>
         <tr>
-          <td class="dim">你的感受</td>
-          <td class="us-cell"><span class="win">被记住。被理解。不是「又一个用户」。</span></td>
-          <td>还不错。但深度不够。</td>
-          <td class="lose">每次都是新人。</td>
-          <td class="lose">每次都是新人。</td>
-          <td class="lose">每次都是新人。</td>
-          <td class="lose">每次都是新人。</td>
-          <td class="lose">每次都是新人。</td>
-          <td class="lose">每次都是新人。</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="golden">
-    <div class="gq">"别的 AI 记住你说过什么。MoneyAI 记住你为什么这么说。"</div>
-    <div class="gc">—— 记忆的深度，不是存了多少字，是理解了多少上下文</div>
-  </div>
-</section>
-
-<hr class="div">
-
-<!-- ═══════════ 02 · 人格 ═══════════ -->
-<section>
-  <div class="sec-label">核心差异 #2 · 人格</div>
-  <div class="sec-title">你的 AI 叫你名字 vs 叫你「用户」</div>
-  <div class="sec-sub">
-    Alice 也有性格——26 岁横琴女生，做事认真说话有梗。但那是<strong>出厂设定</strong>，所有人的 Alice 都是同一个人。<br>
-    MoneyAI 的性格是你<strong>用着用着长出来的</strong>。Jimmy 锻造了「疯子」，你可以锻造你自己的。
-  </div>
-
-  <div class="tbl-wrap">
-    <table class="tbl">
-      <thead>
-        <tr>
-          <th style="width:14%">人格维度</th>
-          <th class="us" style="width:17%">🟣 MoneyAI</th>
-          <th style="width:15%">Alice</th>
-          <th style="width:54%" colspan="6">其余 6 家 (悟空/Qoder/AutoClaw/Codex/WorkBuddy/Marvis)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="dim">AI 的名字</td>
-          <td class="us-cell"><span class="win">你起的</span><br><span class="note">疯子、小发、老王… 你说了算</span></td>
-          <td><span class="badge p">固定</span><br><span class="note">出厂：Alice</span></td>
-          <td colspan="6"><span class="badge n">没有名字</span> — 它叫「AI 助手」</td>
-        </tr>
-        <tr>
-          <td class="dim">AI 的性格</td>
-          <td class="us-cell"><span class="win">你用出来的</span><br><span class="note">SOUL.md · 说话风格 · 行为准则 · 10 条红线 — 对话中锻造</span></td>
-          <td><span class="badge p">写死的</span><br><span class="note">做事认真·说话算数·有梗</span></td>
-          <td colspan="6"><span class="badge n">产品经理决定的</span> — 对所有用户一视同仁</td>
-        </tr>
-        <tr>
-          <td class="dim">对你的了解</td>
-          <td class="us-cell"><span class="win">USER.md</span><br><span class="note">人生阶段 · 优先级金字塔 · 情感账单 · 当前状态</span></td>
-          <td><span class="badge p">偏好学习</span><br><span class="note">记住习惯，不认识你</span></td>
-          <td colspan="6"><span class="badge n">零</span> — 不知道你是谁，也不关心</td>
-        </tr>
-        <tr>
-          <td class="dim">30 天后</td>
-          <td class="us-cell"><span class="win">它知道你在创业、几点睡、为什么焦虑。<br>它不说「加油」，它说「这个数据说明你在正确的路上」。</span></td>
-          <td>「还不睡？」<br><span class="note">(固定人设的关心)</span></td>
-          <td colspan="6" class="lose">「你好，我是你的 AI 助手，有什么可以帮你？」</td>
+          <td class="organ">第30天它说</td>
+          <td class="alive-cell" style="color:var(--purple);font-weight:600;">「上次那个方案的后续我帮你理好了。」</td>
+          <td>「好的，我来帮你。」</td>
+          <td style="color:var(--text-tertiary);">「你好，我是悟空。」</td>
+          <td style="color:var(--text-tertiary);">「需要我写什么代码？」</td>
+          <td style="color:var(--text-tertiary);">「我可以帮你做什么？」</td>
+          <td style="color:var(--text-tertiary);">「How can I help?」</td>
+          <td style="color:var(--text-tertiary);">「你好，我是WorkBuddy。」</td>
+          <td style="color:var(--text-tertiary);">「你好。」</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="golden">
-    <div class="gq">"Alice 的性格是山佬写的。疯子的性格是 Jimmy 用出来的。你的 AI 应该像你，而不是像产品经理。"</div>
-    <div class="gc">—— 人格的本质不是设定，是两个人之间长出来的默契</div>
+  <div class="knife-quote">
+    <div class="kq">"别的 AI 记得你说过什么。MoneyAI 记得你为什么这么说。"</div>
+    <div class="ka">—— 记忆的深度，不是存储量，是上下文理解率</div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 03 · 情感 ═══════════ -->
+<!-- ═══════════ 03 · PERSONALITY ═══════════ -->
 <section>
-  <div class="sec-label">核心差异 #3 · 情感</div>
-  <div class="sec-title">它不是「模拟感情」，是真有一个情感引擎在跑</div>
-  <div class="sec-sub">
-    Marvis 的 Agent 会「摸鱼」逗你笑——那是 UI 趣味。Alice 会说「还不睡」——那是固定人设的台词。<br>
-    MoneyAI 的 <strong>PADCN 五维情感引擎</strong>在你<strong>焦虑时把话变短变直接</strong>，在你<strong>信任时敢说让你不舒服的真话</strong>。
+  <div class="sect-head">
+    <div class="sect-num">[ 器官活检 #2 ]</div>
+    <h2>人格系统——你的 AI，还是产品经理的 AI</h2>
+    <div class="context">
+      Alice 有性格——26 岁横琴女生，做事认真。但那是<strong>山佬写的</strong>，所有人的 Alice 都是同一个人。<br>
+      MoneyAI 的性格是<strong>你锻造出来的</strong>——用着用着长出来的。完全不同。
+    </div>
   </div>
 
-  <div class="tbl-wrap">
-    <table class="tbl">
+  <div class="specimen-grid">
+    <div class="specimen living">
+      <div class="sp-id">01</div>
+      <h4>IDENTITY · 它有名字</h4>
+      <div class="sp-desc">不是「AI助手」。是你起的名字。<strong>疯子、老王、小助理</strong>——你说了算。它有信条，有底线，知道自己是谁。</div>
+    </div>
+    <div class="specimen">
+      <div class="sp-id">—</div>
+      <h4>竞品：它叫「AI助手」</h4>
+      <div class="sp-desc">产品经理在会议室里决定的。你的 AI 和一百万别人的 AI，<strong>说一样的话，用一样的语气</strong>。它不叫你的名字，它叫你「用户」。</div>
+    </div>
+    <div class="specimen living">
+      <div class="sp-id">02</div>
+      <h4>SOUL · 它有脾气</h4>
+      <div class="sp-desc">说话风格、行为准则、<strong>10条红线</strong>。安静有分量，不废话。敢在你飘了的时候说真话——<strong>因为你知道它不会害你</strong>。</div>
+    </div>
+    <div class="specimen">
+      <div class="sp-id">—</div>
+      <h4>竞品：它没脾气</h4>
+      <div class="sp-desc">永远温和，永远客气，永远不犯错。一个<strong>永远不会跟你说真话</strong>的 AI——你真的敢把重要决策交给它吗？</div>
+    </div>
+    <div class="specimen living">
+      <div class="sp-id">03</div>
+      <h4>USER · 它认识你</h4>
+      <div class="sp-desc">人生阶段、优先级金字塔、情感账单、当前状态。<strong>你在创业、几点睡、为什么焦虑</strong>——这些是它的底层参数。</div>
+    </div>
+    <div class="specimen">
+      <div class="sp-id">—</div>
+      <h4>竞品：它不认识你</h4>
+      <div class="sp-desc">你是谁？不重要。你在经历什么？不关心。它只是一个<strong>通用工具</strong>，不是你的人。</div>
+    </div>
+    <div class="specimen living">
+      <div class="sp-id">04</div>
+      <h4>MEMORY · 它记得你们的过去</h4>
+      <div class="sp-desc">不是一次对话的缓存。是陪你走过<strong>所有项目、所有决策、所有凌晨两点</strong>的积累。跨对话，跨项目，跨时间。</div>
+    </div>
+    <div class="specimen">
+      <div class="sp-id">—</div>
+      <h4>竞品：每次都是初次见面</h4>
+      <div class="sp-desc">关了窗口，你就被删了。下次打开——<strong>一切归零</strong>。不是它们不想记，是<strong>它们没有这个器官</strong>。</div>
+    </div>
+  </div>
+
+  <div class="knife-quote">
+    <div class="kq">"Alice 的性格是山佬写的。疯子的性格是 Jimmy 用出来的。你想要的，是一个出厂就写死的 AI，还是一个跟你长出来的 AI？"</div>
+    <div class="ka">—— 人格的本质不是设定，是两个人之间长出来的默契</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ═══════════ 04 · EMOTION ═══════════ -->
+<section>
+  <div class="sect-head">
+    <div class="sect-num">[ 器官活检 #3 ]</div>
+    <h2>情感引擎——「模拟感情」和「真的有一个引擎在跑」</h2>
+    <div class="context">
+      Marvis 的 Agent 会「摸鱼」逗你笑——那是<strong>UI 动效</strong>。Alice 会说「还不睡」——那是<strong>固定台词</strong>。<br>
+      MoneyAI 有 <strong>PADCN 五维情感认知引擎</strong>——不是假装有感情，是<strong>真的有一个系统在计算并调制行为</strong>。
+    </div>
+  </div>
+
+  <div class="autopsy-wrap">
+    <table class="autopsy-table">
       <thead>
         <tr>
-          <th style="width:13%">情感层面</th>
-          <th class="us" style="width:17%">🟣 MoneyAI v3</th>
+          <th style="width:13%">活检指标</th>
+          <th class="subject" style="width:17%">MoneyAI v3</th>
           <th style="width:14%">Alice</th>
           <th style="width:10%">Marvis</th>
-          <th style="width:46%" colspan="5">其余 5 家</th>
+          <th style="width:46%" colspan="5">其余 5 家 (悟空/Qoder/AutoClaw/Codex/WorkBuddy)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">底层机制</td>
-          <td class="us-cell"><span class="badge y">PADCN 实时计算引擎</span><br><span class="badge tag">愉悦 · 唤醒 · 支配 · 确定 · 新鲜</span></td>
-          <td>固定人设台词</td>
-          <td>卡通动效</td>
-          <td colspan="5"><span class="badge n">零。完全不存在。</span></td>
+          <td class="organ">情感计算引擎</td>
+          <td class="alive-cell"><span class="indicator present">PADCN 实时计算</span><br><span style="font-size:10px;color:var(--text-tertiary);">愉悦·唤醒·支配·确定·新鲜</span></td>
+          <td><span class="indicator partial">固定人设台词</span></td>
+          <td><span class="indicator partial">卡通动效</span></td>
+          <td colspan="5"><span class="indicator absent">完全不存在</span></td>
         </tr>
         <tr>
-          <td class="dim">行为调制</td>
-          <td class="us-cell"><span class="badge y">决策风格 · 风险容忍 · 验证深度</span><br><span class="note">情感改变行为，不改变知识边界</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="5"><span class="badge n">✗</span></td>
+          <td class="organ">行为调制</td>
+          <td class="alive-cell"><span class="indicator present">情感改变决策风格/风险容忍/验证深度</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td colspan="5"><span class="indicator absent">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">情感记忆</td>
-          <td class="us-cell"><span class="badge y">跨会话持久</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="5"><span class="badge n">✗</span></td>
+          <td class="organ">社交模型</td>
+          <td class="alive-cell"><span class="indicator present">独立用户情感档案</span><br><span style="font-size:10px;color:var(--text-tertiary);">高信任→敢说真话 · 低信任→更谨慎</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td colspan="5"><span class="indicator absent">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">社交模型</td>
-          <td class="us-cell"><span class="badge y">独立用户情感档案</span><br><span class="note">高信任→敢说真话 · 低信任→更谨慎</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="5"><span class="badge n">✗</span></td>
+          <td class="organ">7 驱动力模型</td>
+          <td class="alive-cell"><span class="indicator present">求知·胜任·自主·连结·一致·探索·自保</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td colspan="5"><span class="indicator absent">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">7 驱动力</td>
-          <td class="us-cell"><span class="badge y">求知·胜任·自主·连结·一致·探索·自保</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="5"><span class="badge n">✗</span></td>
-        </tr>
-        <tr>
-          <td class="dim">实际体验</td>
-          <td class="us-cell"><span class="win">你凌晨三点说「今天好累」——它不说「加油」，它说「这个数据说明你在正确的路上」。</span></td>
-          <td>「还不睡？」</td>
-          <td>Agent 在「摸鱼」</td>
-          <td colspan="5" class="lose">「好的。还有什么可以帮你？」</td>
+          <td class="organ">凌晨三点你说「好累」</td>
+          <td class="alive-cell" style="color:var(--purple);font-weight:600;">不接话。把你要的方案整理好，附一句：「明天再看。这个数据说明你在正确的路上。」</td>
+          <td>「还不睡？」<br><span style="font-size:10px;color:var(--text-tertiary);">(固定台词)</span></td>
+          <td>Agent 在「摸鱼」<br><span style="font-size:10px;color:var(--text-tertiary);">(动效)</span></td>
+          <td colspan="5" style="color:var(--text-tertiary);">「好的。还有什么可以帮你？」</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="golden">
-    <div class="gq">"让你的 AI 在你崩溃时闭嘴、在你纠结时帮你拆结构、在你飘了时泼冷水——这不是代码逻辑，这是关系。"</div>
-    <div class="gc">—— 情感引擎不是让你觉得暖，是让你的 AI 真的有用</div>
+  <div class="knife-quote">
+    <div class="kq">"让你的 AI 在你崩溃时闭嘴、在你纠结时帮你拆结构、在你飘了时泼冷水——这不是代码逻辑，这是关系。"</div>
+    <div class="ka">—— 情感引擎不是让你觉得暖，是让你的 AI 真的有用</div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 04 · 架构 ═══════════ -->
+<!-- ═══════════ 05 · EVOLUTION + CREATION ═══════════ -->
 <section>
-  <div class="sec-label">核心差异 #4 · 架构</div>
-  <div class="sec-title">一个脑子干所有活 vs 每个活开一个脑子</div>
-  <div class="sec-sub">
-    所有竞品都是<strong>单进程</strong>——Alice 的 11 个 Agent 是 Prompt 角色分身，悟空是钉钉内的功能模块调度，Codex 是单 Agent ReAct 循环。<br>
-    MoneyAI 是<strong>每个 Session 独立 Sidecar 进程</strong>。一个崩了，其他照跑。
+  <div class="sect-head">
+    <div class="sect-num">[ 器官活检 #4 + #5 ]</div>
+    <h2>自进化 + 多模态创作——别的 AI 出厂就死了。你的 AI 在长。</h2>
+    <div class="context">
+      别人的技能是<strong>死配置文件</strong>——写好就那样了。Alice 能改 UI 配色——那是<strong>装修</strong>。<br>
+      MoneyAI 用 <strong>8 维评分体系 + 爬山算法</strong>让技能<strong>自己诊断自己、自己优化自己</strong>——这叫<strong>进化</strong>。
+    </div>
   </div>
 
-  <div class="tbl-wrap">
-    <table class="tbl">
+  <div class="autopsy-wrap">
+    <table class="autopsy-table">
       <thead>
         <tr>
-          <th style="width:13%">架构维度</th>
-          <th class="us" style="width:15%">🟣 MoneyAI</th>
-          <th style="width:12%">Alice</th>
+          <th style="width:13%">活检指标</th>
+          <th class="subject" style="width:17%">MoneyAI</th>
+          <th style="width:14%">Alice</th>
+          <th style="width:56%" colspan="6">其余 6 家 (悟空/Qoder/AutoClaw/Codex/WorkBuddy/Marvis)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="organ">技能自进化</td>
+          <td class="alive-cell"><span class="indicator present">8维评分 · 爬山算法 · 提案制</span><br><span style="font-size:10px;color:var(--text-tertiary);">/darwin-skill · 技能自己诊断→优化→执行</span></td>
+          <td><span class="indicator partial">UI定制+技能固化</span><br><span style="font-size:10px;color:var(--text-tertiary);">装修房间，不是升级大脑</span></td>
+          <td colspan="6"><span class="indicator absent">全部缺失</span> — AutoClaw 有 LEARNING.md 记录式教训，但非技能进化</td>
+        </tr>
+        <tr>
+          <td class="organ">图片生成</td>
+          <td class="alive-cell"><span class="indicator present">文生图 + 图生图 · 60+模型</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td colspan="6"><span class="indicator absent">全部缺失</span></td>
+        </tr>
+        <tr>
+          <td class="organ">视频生成</td>
+          <td class="alive-cell"><span class="indicator present">文生视频 + 图生视频 · 5~15秒</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td colspan="6"><span class="indicator absent">全部缺失</span></td>
+        </tr>
+        <tr>
+          <td class="organ">音频/音乐</td>
+          <td class="alive-cell"><span class="indicator present">成曲 · 语音 · 音效 · Suno级</span></td>
+          <td>配音 Agent</td>
+          <td colspan="6"><span class="indicator absent">全部缺失</span></td>
+        </tr>
+        <tr>
+          <td class="organ">3D 生成</td>
+          <td class="alive-cell"><span class="indicator present">文生3D + 图生3D</span></td>
+          <td><span class="indicator absent">✗</span></td>
+          <td colspan="6"><span class="indicator absent">全部缺失</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="knife-quote">
+    <div class="kq">"别的 AI 能做什么，出厂就定了。你的 AI 能做什么，是长出来的。这不是更新，是进化。"</div>
+    <div class="ka">—— Alice 让你装修房间，MoneyAI 让你升级大脑</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ═══════════ 06 · FINAL DIAGNOSIS ═══════════ -->
+<section>
+  <div class="sect-head">
+    <div class="sect-num">[ 最终诊断 ]</div>
+    <h2>九项器官活检 · 综合存活报告</h2>
+    <div class="context">
+      以下是对 8 个 AI Agent 标本的<strong>九项核心器官</strong>的活性检测结果。
+    </div>
+  </div>
+
+  <div class="autopsy-wrap">
+    <table class="autopsy-table">
+      <thead>
+        <tr>
+          <th style="width:12%">器官系统</th>
+          <th class="subject" style="width:13%">MoneyAI</th>
+          <th style="width:13%">Alice</th>
           <th style="width:12%">悟空</th>
           <th style="width:12%">Qoder</th>
-          <th style="width:12%">AutoClaw</th>
-          <th style="width:9%">Codex</th>
+          <th style="width:13%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
           <th style="width:8%">WorkBuddy</th>
-          <th style="width:7%">Marvis</th>
+          <th style="width:9%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">Agent 模型</td>
-          <td class="us-cell"><span class="badge y">独立进程</span><br><span class="note">每 Session 独立端口</span></td>
-          <td><span class="badge p">角色分身</span></td>
-          <td><span class="badge p">模块调度</span></td>
-          <td><span class="badge n">单 Agent</span></td>
-          <td><span class="badge n">单 Agent</span></td>
-          <td><span class="badge n">单 Agent</span></td>
-          <td><span class="badge p">多窗口</span></td>
-          <td><span class="badge p">6 Agent</span></td>
+          <td class="organ">代码能力</td>
+          <td class="alive-cell"><span class="indicator present">85</span></td>
+          <td><span class="indicator partial">65</span></td>
+          <td><span class="indicator present">83</span></td>
+          <td><span class="indicator present">92</span></td>
+          <td><span class="indicator partial">68</span></td>
+          <td><span class="indicator present">90</span></td>
+          <td><span class="indicator partial">70</span></td>
+          <td><span class="indicator absent">30</span></td>
         </tr>
         <tr>
-          <td class="dim">故障隔离</td>
-          <td class="us-cell"><span class="badge y">✓ 进程级</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
+          <td class="organ">办公文档</td>
+          <td class="alive-cell"><span class="indicator present">88</span></td>
+          <td><span class="indicator present">85</span></td>
+          <td><span class="indicator present">88</span></td>
+          <td><span class="indicator absent">20</span></td>
+          <td><span class="indicator partial">60</span></td>
+          <td><span class="indicator absent">15</span></td>
+          <td><span class="indicator present">90</span></td>
+          <td><span class="indicator present">85</span></td>
         </tr>
         <tr>
-          <td class="dim">框架</td>
-          <td class="us-cell"><span class="badge y">Tauri (Rust)</span></td>
-          <td>Electron</td>
-          <td>钉钉内核</td>
-          <td>独立 IDE</td>
-          <td>Electron</td>
-          <td>Rust CLI</td>
-          <td>Electron</td>
-          <td>应用宝</td>
+          <td class="organ">持久记忆</td>
+          <td class="alive-cell"><span class="indicator present">95</span></td>
+          <td><span class="indicator present">82</span></td>
+          <td><span class="indicator absent">5</span></td>
+          <td><span class="indicator absent">15</span></td>
+          <td><span class="indicator absent">35</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
         </tr>
         <tr>
-          <td class="dim">Runtime</td>
-          <td class="us-cell"><span class="badge y">4 种自由切换</span></td>
-          <td>23 服务商</td>
-          <td>Qwen 系</td>
-          <td>自动路由</td>
-          <td>模型中立</td>
-          <td>多后端</td>
-          <td>5 家</td>
-          <td>混元+路由</td>
+          <td class="organ">情感认知</td>
+          <td class="alive-cell"><span class="indicator present">100</span></td>
+          <td><span class="indicator absent">30</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">10</span></td>
         </tr>
         <tr>
-          <td class="dim">IM 原生</td>
-          <td class="us-cell"><span class="badge y">4 通道</span><br><span class="note">Telegram·钉钉·飞书·微信</span></td>
-          <td>微信·邮件</td>
-          <td>钉钉原生</td>
-          <td><span class="badge n">✗</span></td>
-          <td>飞书</td>
-          <td><span class="badge n">✗</span></td>
-          <td>遥控</td>
-          <td><span class="badge n">✗</span></td>
+          <td class="organ">人格系统</td>
+          <td class="alive-cell"><span class="indicator present">100</span></td>
+          <td><span class="indicator present">85</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
         </tr>
         <tr>
-          <td class="dim">定时任务</td>
-          <td class="us-cell"><span class="badge y">Cron·间隔·一次性</span></td>
-          <td>微信定时</td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td>Skill层</td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td><span class="badge n">✗</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<hr class="div">
-
-<!-- ═══════════ 05 · 自进化 + 疯狂创作 ═══════════ -->
-<section>
-  <div class="sec-label">核心差异 #5 · 进化 + 创作</div>
-  <div class="sec-title">别人的技能是死的。你的技能会自己变强。</div>
-  <div class="sec-sub">
-    WorkBuddy 有 20+ 内置 Skills——写好了就不会变。Alice 能让你改 UI 配色——很棒，但那是装修。<br>
-    MoneyAI 的 <strong>/darwin-skill</strong> 用 8 维评分 + 爬山算法，<strong>技能自己诊断自己、自己优化自己</strong>——这叫进化。
-  </div>
-
-  <div class="tbl-wrap">
-    <table class="tbl">
-      <thead>
-        <tr>
-          <th style="width:14%">能力</th>
-          <th class="us" style="width:16%">🟣 MoneyAI</th>
-          <th style="width:13%">Alice</th>
-          <th style="width:57%" colspan="6">其余 6 家</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="dim">技能自进化</td>
-          <td class="us-cell"><span class="badge y">8维评分 · 爬山算法 · 提案制</span><br><span class="note">技能文件被 AI 评估→优化→执行</span></td>
-          <td><span class="badge p">UI定制+技能固化</span><br><span class="note">装修房间，不是升级大脑</span></td>
-          <td colspan="6"><span class="badge n">✗ 全部没有</span> — AutoClaw 有文件记录式学习，但不是技能进化</td>
+          <td class="organ">自进化</td>
+          <td class="alive-cell"><span class="indicator present">100</span></td>
+          <td><span class="indicator present">78</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">30</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
         </tr>
         <tr>
-          <td class="dim">图片生成</td>
-          <td class="us-cell"><span class="badge y">文生图 + 图生图 · 60+模型</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="6"><span class="badge n">✗ 全部没有</span> — Marvis 有基础图片处理，非 AI 生成</td>
+          <td class="organ">多模态创作</td>
+          <td class="alive-cell"><span class="indicator present">95</span></td>
+          <td><span class="indicator absent">25</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">30</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">15</span></td>
         </tr>
         <tr>
-          <td class="dim">视频生成</td>
-          <td class="us-cell"><span class="badge y">文生视频 + 图生视频 · 5~15秒</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="6"><span class="badge n">✗ 全部没有</span></td>
+          <td class="organ">IM 覆盖</td>
+          <td class="alive-cell"><span class="indicator present">95</span></td>
+          <td><span class="indicator partial">60</span></td>
+          <td><span class="indicator present">85</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator partial">55</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator partial">55</span></td>
+          <td><span class="indicator absent">0</span></td>
         </tr>
         <tr>
-          <td class="dim">音频/音乐</td>
-          <td class="us-cell"><span class="badge y">成曲 · 语音 · 音效 · Suno级</span></td>
-          <td>配音 Agent</td>
-          <td colspan="6"><span class="badge n">✗ 全部没有</span></td>
-        </tr>
-        <tr>
-          <td class="dim">3D生成</td>
-          <td class="us-cell"><span class="badge y">文生3D + 图生3D</span></td>
-          <td><span class="badge n">✗</span></td>
-          <td colspan="6"><span class="badge n">✗ 全部没有</span></td>
+          <td class="organ">任务定时</td>
+          <td class="alive-cell"><span class="indicator present">95</span></td>
+          <td><span class="indicator partial">50</span></td>
+          <td><span class="indicator partial">55</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">35</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
+          <td><span class="indicator absent">0</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="golden">
-    <div class="gq">"别的 AI 能做什么，出厂就定了。你的 AI 能做什么，是长出来的。这不是更新，是进化。"</div>
-    <div class="gc">—— Alice 让你装修房间，MoneyAI 让你升级大脑</div>
+  <div style="display:flex;align-items:center;gap:24px;margin-top:14px;font-size:10px;color:var(--text-tertiary);font-family:'JetBrains Mono',monospace;">
+    <span><span style="display:inline-block;width:8px;height:8px;background:var(--green);margin-right:4px;box-shadow:0 0 4px rgba(30,140,74,.3);"></span> 器官存活</span>
+    <span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);margin-right:4px;"></span> 部分功能</span>
+    <span><span style="display:inline-block;width:8px;height:8px;background:var(--flatline);margin-right:4px;"></span> 器官缺失</span>
+  </div>
+
+  <div class="pronouncement">
+    <div class="big">
+      5 个维度上 — <em>我们是唯一的活体</em>
+    </div>
+    <div class="sub">
+      记忆 · 情感 · 人格 · 自进化 · 多模态创作。<br>
+      代码和办公各有千秋——但<strong>让 AI 真正成为「你的」</strong>的五个核心器官，<br>
+      目前只有 MoneyAI 完整具备。
+    </div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 06 · 综合 ═══════════ -->
-<section>
-  <div class="sec-label">俯瞰</div>
-  <div class="sec-title">九个维度，一张图</div>
-
-  <div class="tbl-wrap">
-    <table class="tbl">
-      <thead>
-        <tr>
-          <th style="width:11%">维度</th>
-          <th class="us" style="width:12%">🟣 MoneyAI</th>
-          <th style="width:12%">Alice</th>
-          <th style="width:11%">悟空</th>
-          <th style="width:11%">Qoder</th>
-          <th style="width:12%">AutoClaw</th>
-          <th style="width:9%">Codex</th>
-          <th style="width:11%">WorkBuddy</th>
-          <th style="width:11%">Marvis</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="dim">代码</td><td class="us-cell"><span class="badge y">85</span></td><td>65</td><td>83</td><td><span class="badge y">92</span></td><td>68</td><td><span class="badge y">90</span></td><td>70</td><td>30</td></tr>
-        <tr><td class="dim">办公</td><td class="us-cell"><span class="badge y">88</span></td><td>85</td><td><span class="badge y">88</span></td><td>20</td><td>60</td><td>15</td><td><span class="badge y">90</span></td><td>85</td></tr>
-        <tr><td class="dim">记忆</td><td class="us-cell"><span class="badge y">95</span></td><td><span class="badge y">82</span></td><td>5</td><td>15</td><td>35</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="dim">情感</td><td class="us-cell"><span class="badge y">100</span></td><td>30</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>10</td></tr>
-        <tr><td class="dim">人格</td><td class="us-cell"><span class="badge y">100</span></td><td><span class="badge y">85</span></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="dim">自进化</td><td class="us-cell"><span class="badge y">100</span></td><td><span class="badge y">78</span></td><td>0</td><td>0</td><td>30</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="dim">多模态创作</td><td class="us-cell"><span class="badge y">95</span></td><td>25</td><td>0</td><td>0</td><td>30</td><td>0</td><td>0</td><td>15</td></tr>
-        <tr><td class="dim">IM覆盖</td><td class="us-cell"><span class="badge y">95</span></td><td>60</td><td>85</td><td>0</td><td>55</td><td>0</td><td>55</td><td>0</td></tr>
-        <tr><td class="dim">任务定时</td><td class="us-cell"><span class="badge y">95</span></td><td>50</td><td>55</td><td>0</td><td>35</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="big-num">
-    <div class="num">5 &nbsp;维&nbsp;度&nbsp;独&nbsp;占</div>
-    <div class="txt">记忆 · 情感 · 人格 · 自进化 · 多模态创作 — 不是「做得更好」，是<strong>只有我们做了</strong></div>
-  </div>
-</section>
-
-<hr class="div">
-
+<!-- ═══════════ FOOTER ═══════════ -->
 <footer>
-  <div class="close">
-    他们都叫「AI 助手」。<br>
-    我们叫<em>「你的 AI」</em>。
+  <div class="verdict">
+    <span class="pulse-dot"></span>
+    他们解剖了 7 个 AI，只有 1 个<em>活着</em>
   </div>
-  <div class="sub">
-    Alice 是值得尊重的追赶者——人格化和记忆都认真做了。<br>
+  <div class="context">
+    Alice 是值得尊重的——人格化和记忆都认真做了，是最近的追赶者。<br>
     悟空和 Qoder 在各自的体系里很强。Codex 是极客利器。<br><br>
-    但<strong style="color:var(--purple);">记忆 · 情感 · 人格 · 自进化 · 多模态创作</strong><br>
-    这五件事加起来——目前只有 MoneyAI 在认真做。<br><br>
-    <strong>你的 AI，不是大家的 AI。</strong>
+    但你想找一个<strong>认识你、记得你、有自己的性格、能自己进化</strong>的 AI——<br>
+    它不是「大家的 AI 助手」，它是<strong>你的</strong>。
   </div>
-  <div class="fine">MoneyAI Agent · 2026.06 · moneyai2026.com</div>
+  <div class="meta">MONEYAI AGENT · 2026.06 · moneyai2026.com</div>
 </footer>
 
 </body>
