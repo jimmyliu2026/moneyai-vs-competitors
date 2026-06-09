@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoneyAI Agent · 竞品对比报告</title>
+<title>MoneyAI Agent · 竞品深度对比 · 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FAFAFC;
+    --bg: #F9F8FC;
     --card: #FFFFFF;
-    --border: #E8E4EE;
-    --border-strong: #D5CEE0;
+    --border: #E8E4F0;
+    --border-strong: #D5CEE4;
     --text: #1A1525;
     --text2: #5C5470;
     --text3: #9B90AD;
@@ -22,248 +22,273 @@
     --purple-border: #E0D0F4;
     --green: #1E8C4A;
     --green-bg: #EDF8F1;
+    --green-border: #C5E8D0;
     --red: #D9303F;
     --red-bg: #FEF2F3;
     --amber: #B86E00;
     --amber-bg: #FFF9ED;
-    --white: #FFFFFF;
+    --blue: #2563EB;
+    --blue-bg: #EFF4FF;
   }
-
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Noto Sans SC','Inter',-apple-system,sans-serif;
-    line-height: 1.6;
-    font-size: 15px;
+    line-height: 1.6; font-size: 15px;
     -webkit-font-smoothing: antialiased;
   }
-
-  /* ── HEADER ── */
   header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 32px;
-    display: flex; justify-content: space-between; align-items: center;
+    background: var(--card); border-bottom: 1px solid var(--border);
+    padding: 16px 32px; display: flex; justify-content: space-between; align-items: center;
     position: sticky; top:0; z-index:100;
   }
-  header .logo { font-weight:800; font-size:18px; letter-spacing:-.02em; color:var(--text); }
+  header .logo { font-weight:800; font-size:18px; letter-spacing:-.02em; }
   header .logo span { color:var(--purple); }
   header .meta { font-size:13px; color:var(--text3); }
-
-  /* ── SECTION ── */
-  section { max-width:1080px; margin:0 auto; padding:56px 32px; }
+  section { max-width:1140px; margin:0 auto; padding:56px 32px; }
   hr.div { border:none; border-top:1px solid var(--border); margin:0; }
 
-  .sec-num { font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--purple); margin-bottom:4px; text-transform:uppercase; }
-  .sec-title {
-    font-weight:800; font-size:clamp(1.3rem, 2vw, 1.6rem);
-    letter-spacing:-.02em; margin-bottom:28px; color:var(--text);
-  }
+  .sec-num { font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--purple); margin-bottom:6px; text-transform:uppercase; }
+  .sec-title { font-weight:800; font-size:clamp(1.3rem,2vw,1.7rem); letter-spacing:-.02em; margin-bottom:8px; color:var(--text); }
+  .sec-sub { font-size:14px; color:var(--text2); margin-bottom:28px; line-height:1.7; }
+  .sec-sub strong { color:var(--text); }
+  .sec-sub b { color:var(--purple); }
 
   /* ── HERO ── */
   .hero { padding:64px 32px 48px; text-align:center; }
-  .hero .tagline {
-    font-size:13px; font-weight:600; letter-spacing:.1em; color:var(--purple);
-    text-transform:uppercase; margin-bottom:16px;
-  }
-  .hero h1 {
-    font-weight:900; font-size:clamp(2rem, 4.5vw, 3.2rem);
-    line-height:1.15; letter-spacing:-.03em; margin-bottom:20px; color:var(--text);
-  }
+  .hero .tagline { font-size:13px; font-weight:700; letter-spacing:.1em; color:var(--purple); text-transform:uppercase; margin-bottom:16px; }
+  .hero h1 { font-weight:900; font-size:clamp(2rem,4.5vw,3.4rem); line-height:1.12; letter-spacing:-.03em; margin-bottom:20px; }
   .hero h1 em { font-style:normal; color:var(--purple); }
-  .hero .sub {
-    font-size:16px; color:var(--text2); max-width:620px; margin:0 auto 32px; line-height:1.7;
-  }
-  .hero .sub strong { color:var(--text); }
-  .hero .quick-stats {
-    display:flex; justify-content:center; gap:36px; flex-wrap:wrap;
-  }
-  .hero .quick-stats .qs { text-align:center; }
-  .hero .quick-stats .qs .n {
-    font-weight:900; font-size:28px; color:var(--purple); line-height:1;
-  }
-  .hero .quick-stats .qs .l {
-    font-size:12px; color:var(--text3); margin-top:4px;
-  }
+  .hero .sub { font-size:16px; color:var(--text2); max-width:660px; margin:0 auto 32px; line-height:1.7; }
+  .hero .stats { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
+  .hero .stats .st { text-align:center; }
+  .hero .stats .st .n { font-weight:900; font-size:30px; color:var(--purple); line-height:1; }
+  .hero .stats .st .l { font-size:12px; color:var(--text3); margin-top:4px; }
 
   /* ── TABLE ── */
-  .tbl-wrap {
-    overflow-x:auto;
-    border:1px solid var(--border-strong);
-    border-radius:8px;
-    background:var(--white);
-    box-shadow: 0 1px 3px rgba(0,0,0,.04);
-  }
-  .tbl {
-    width:100%; border-collapse:collapse; font-size:14px; min-width:900px;
-  }
+  .tbl-wrap { overflow-x:auto; border:1px solid var(--border-strong); border-radius:8px; background:var(--card); box-shadow:0 1px 3px rgba(0,0,0,.03); margin-bottom:12px; }
+  .tbl { width:100%; border-collapse:collapse; font-size:13px; min-width:960px; }
   .tbl thead th {
-    font-size:12px; font-weight:700; letter-spacing:.04em;
-    color:var(--text3); text-align:left; padding:14px 16px;
-    background:#FAFAFC; border-bottom:2px solid var(--border-strong);
-    white-space:nowrap; text-transform:uppercase;
+    font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text3);
+    text-align:left; padding:12px 14px; background:#FAFAFC;
+    border-bottom:2px solid var(--border-strong); white-space:nowrap; text-transform:uppercase;
   }
-  .tbl thead th.us {
-    color:var(--purple); background:var(--purple-light);
-    border-bottom-color:var(--purple);
-  }
-  .tbl tbody td {
-    padding:13px 16px; border-bottom:1px solid var(--border);
-    vertical-align:top; line-height:1.55;
-  }
+  .tbl thead th.us { color:var(--purple); background:var(--purple-light); border-bottom-color:var(--purple); }
+  .tbl tbody td { padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.55; }
   .tbl tbody tr:last-child td { border-bottom:none; }
   .tbl tbody tr:hover td { background:#FAFAFC; }
-  .tbl .dim { font-weight:600; font-size:13px; color:var(--text); white-space:nowrap; }
+  .tbl .dim { font-weight:600; font-size:12px; color:var(--text); white-space:nowrap; }
   .tbl .us-cell { background:var(--purple-bg); border-left:3px solid var(--purple); }
+  .tbl .win { color:var(--purple); font-weight:700; }
+  .tbl .lose { color:var(--text3); }
+  .tbl .note { font-size:11px; color:var(--text3); margin-top:2px; }
 
-  /* ── BADGES ── */
-  .badge {
-    display:inline-block; font-size:11px; font-weight:600; padding:2px 8px;
-    border-radius:4px; letter-spacing:.02em;
-  }
+  .badge { display:inline-block; font-size:10px; font-weight:600; padding:2px 8px; border-radius:4px; letter-spacing:.02em; }
   .badge.y { background:var(--green-bg); color:var(--green); }
   .badge.n { background:var(--red-bg); color:var(--red); }
   .badge.p { background:var(--amber-bg); color:var(--amber); }
-  .badge.tag { background:var(--purple-light); color:var(--purple); font-size:10px; margin-left:4px; }
+  .badge.tag { background:var(--purple-light); color:var(--purple); font-size:10px; margin-left:3px; }
 
-  .check { color:var(--green); font-weight:700; }
-  .cross { color:var(--red); }
-  .partial { color:var(--amber); }
+  /* ── SCENARIO CARDS ── */
+  .scene-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:12px; margin-bottom:24px; }
+  .scene-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; }
+  .scene-card.ours { border-color:var(--purple-border); background:var(--purple-bg); }
+  .scene-card .sc-who { font-size:11px; font-weight:700; letter-spacing:.05em; color:var(--text3); text-transform:uppercase; margin-bottom:6px; }
+  .scene-card.ours .sc-who { color:var(--purple); }
+  .scene-card .sc-says { font-size:14px; color:var(--text); line-height:1.6; font-style:italic; }
+  .scene-card .sc-says::before { content:'"'; color:var(--purple); font-weight:900; font-size:20px; }
+  .scene-card .sc-says::after { content:'"'; color:var(--purple); font-weight:900; font-size:20px; }
 
-  .note { font-size:12px; color:var(--text3); margin-top:2px; font-style:italic; }
+  /* ── QUOTE ── */
+  .pull { background:var(--purple-bg); border:1px solid var(--purple-border); border-radius:8px; padding:18px 22px; margin:20px 0; }
+  .pull .q { font-weight:700; color:var(--purple); }
+  .pull .c { color:var(--text2); margin-top:2px; }
 
-  /* ── VISUAL METER ROW ── */
-  .meter-strip { margin:20px 0 0; }
-  .meter-row { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
-  .meter-label {
-    width:130px; flex-shrink:0; font-size:12px; font-weight:600;
-    color:var(--text2); text-align:right;
-  }
-  .meter-bars { flex:1; display:flex; gap:4px; border-radius:4px; overflow:hidden; }
-  .meter-block {
-    height:22px; display:flex; align-items:center; justify-content:center;
-    font-size:10px; font-weight:600; color:#fff; white-space:nowrap;
-    min-width:0; overflow:hidden; text-overflow:ellipsis;
-    transition: width .8s ease;
-  }
-  .meter-block.m { background:var(--purple); }
-  .meter-block.o { background:#D5CEE0; color:var(--text3); }
-  .meter-block.w { background:#EBE8F0; color:var(--text3); }
+  /* ── CAPABILITY BAR ── */
+  .cap-strip { margin:16px 0; }
+  .cap-row { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .cap-label { width:120px; flex-shrink:0; font-size:12px; font-weight:600; color:var(--text2); text-align:right; }
+  .cap-bars { flex:1; display:flex; gap:3px; border-radius:4px; overflow:hidden; }
+  .cap-block { height:22px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff; white-space:nowrap; }
+  .cap-block.m { background:var(--purple); }
+  .cap-block.o { background:#D5CEE4; color:var(--text3); }
+  .cap-block.w { background:#EBE8F2; color:var(--text3); }
 
-  /* ── STICKY SUMMARY ── */
-  .summary-grid {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;
-    margin-bottom:32px;
-  }
-  .summary-card {
-    background:var(--white); border:1px solid var(--border);
-    border-radius:8px; padding:20px;
-  }
-  .summary-card.win { border-color:var(--purple-border); background:var(--purple-bg); }
-  .summary-card .sc-dim { font-size:11px; font-weight:700; letter-spacing:.05em; color:var(--text3); text-transform:uppercase; margin-bottom:6px; }
-  .summary-card .sc-val { font-size:15px; font-weight:700; color:var(--text); }
-  .summary-card.win .sc-val { color:var(--purple); }
+  /* ── STAR RATING ── */
+  .stars { white-space:nowrap; }
+  .stars .s-on { color:var(--purple); }
+  .stars .s-off { color:var(--border-strong); }
 
   /* ── FOOTER ── */
   footer {
-    background:var(--white); border-top:2px solid var(--border-strong);
-    padding:40px 32px; text-align:center;
+    background:var(--card); border-top:2px solid var(--border-strong);
+    padding:44px 32px; text-align:center;
   }
-  footer .closing {
-    font-weight:800; font-size:clamp(1.1rem, 1.8vw, 1.4rem);
-    letter-spacing:-.02em; margin-bottom:12px; color:var(--text);
-  }
-  footer .closing em { font-style:normal; color:var(--purple); }
-  footer .sub { font-size:14px; color:var(--text2); max-width:600px; margin:0 auto 16px; line-height:1.6; }
+  footer .close { font-weight:800; font-size:clamp(1.1rem,1.8vw,1.5rem); letter-spacing:-.02em; margin-bottom:12px; line-height:1.4; }
+  footer .close em { font-style:normal; color:var(--purple); }
+  footer .sub { font-size:14px; color:var(--text2); max-width:620px; margin:0 auto 16px; line-height:1.6; }
   footer .fine { font-size:11px; color:var(--text3); }
 
-  /* ── RESPONSIVE ── */
-  @media(max-width:768px){
-    section{padding:36px 16px;}
-    .hero h1{font-size:1.8rem;}
-  }
+  @media(max-width:768px){ section{padding:36px 16px;} .hero h1{font-size:1.8rem;} }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ HEADER ═══════════ -->
 <header>
-  <div class="logo"><span>MoneyAI</span> Agent · 竞品对比报告</div>
-  <div class="meta">2026.06.08 &nbsp;·&nbsp; v2.1.4</div>
+  <div class="logo"><span>MoneyAI</span> Agent · 竞品深度对比报告</div>
+  <div class="meta">2026.06 · v2.1.4</div>
 </header>
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <div class="tagline">这不是功能对比 · 这是代际差距</div>
-  <h1>别人在做<em>工具</em><br>我们在造<em>搭档</em></h1>
+  <div class="tagline">八款 Agent 横向实测 · 这不是测评，这是真相</div>
+  <h1>同一个需求扔进去<br>谁<em>真干活</em>，谁<em>装样子</em></h1>
   <p class="sub">
-    Marvis、WorkBuddy、Qoder、Codex——它们<strong>能用</strong>，甚至<strong>好用</strong>。<br>
-    但关了窗口，它们就忘了你。<br>
-    MoneyAI <strong>记得你、懂你、有脾气、会进化</strong>。<br>
-    下面是硬核实测对比。
+    Marvis、WorkBuddy、悟空、Qoder、Codex、Alice、AutoClaw——<br>
+    都有自己的绝活。但<strong>「认识你、懂你、记得你、主动进化」</strong>这件事上，<br>
+    绝大多数还在对话框里打转。
   </p>
-  <div class="quick-stats">
-    <div class="qs"><div class="n">6</div><div class="l">对比维度</div></div>
-    <div class="qs"><div class="n">0</div><div class="l">竞品有持久记忆</div></div>
-    <div class="qs"><div class="n">0</div><div class="l">竞品有情感系统</div></div>
-    <div class="qs"><div class="n">4</div><div class="l">MoneyAI 独占能力</div></div>
+  <div class="stats">
+    <div class="st"><div class="n">1 vs 7</div><div class="l">本次对比竞品数</div></div>
+    <div class="st"><div class="n">9</div><div class="l">核心对比维度</div></div>
+    <div class="st"><div class="n">5</div><div class="l">MoneyAI 独占能力</div></div>
+    <div class="st"><div class="n">0</div><div class="l">竞品全部具备的能力</div></div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 总览 ═══════════ -->
+<!-- ═══════════ 00 · 场景开场 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 00</div>
-  <div class="sec-title">定位速览：它们是什么，我们是什么</div>
+  <div class="sec-num">SECTION 00 · 场景切入</div>
+  <div class="sec-title">同一个需求，不同 Agent 怎么回你</div>
+  <div class="sec-sub">你说：<strong>"帮我把上周聊的技能面板重构方案，整理成一份给小发的需求文档，明天上班前发到飞书。"</strong></div>
+
+  <div class="scene-grid">
+    <div class="scene-card ours">
+      <div class="sc-who">🟣 MoneyAI</div>
+      <div class="sc-says">上次我们决定从 5 个 Tab 砍到 2 个，砍掉甜甜圈图，改用扁平列表 + filter pills。文档我按你偏好的一线需求文档格式来写——问题定位、具体方案、实现要点、预期收益，分 P0/P1/P2。写好了，你看看，没问题我通过飞书发出去。</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">Alice</div>
+      <div class="sc-says">好的，让我先调研一下你的技能面板现状…（开始从头询问你的项目结构、技术栈、当前组件）</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">悟空</div>
+      <div class="sc-says">请提供项目代码仓库地址和工作区路径，我将调用代码分析 Agent 进行扫描。</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">Codex</div>
+      <div class="sc-says">I'll need to see your current codebase first. What files should I look at?</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">Qoder</div>
+      <div class="sc-says">请打开项目，我通过 Repo Wiki 分析代码结构后生成文档。</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">AutoClaw</div>
+      <div class="sc-says">收到。正在调用 doc-writer skill…（但不知道你之前讨论过什么）</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">WorkBuddy</div>
+      <div class="sc-says">好的，我来帮你起草一份需求文档。请问文档需要包含哪些部分？</div>
+    </div>
+    <div class="scene-card">
+      <div class="sc-who">Marvis</div>
+      <div class="sc-says">我可以帮你在电脑上整理文档文件。请问文档要保存在哪个文件夹？</div>
+    </div>
+  </div>
+
+  <div class="pull">
+    <div class="q">看出来了吗？只有 MoneyAI 记得「上次聊到哪」。其他七家，每一家都在让你重新交代背景。</div>
+    <div class="c">这就是记忆系统的代际差距——不是功能列表能追平的。</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ═══════════ 01 · 定位总览 ═══════════ -->
+<section>
+  <div class="sec-num">SECTION 01 · 定位扫描</div>
+  <div class="sec-title">八款产品，一张表说清楚</div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:14%">产品</th>
-          <th style="width:24%">一句话定位</th>
-          <th style="width:20%">核心场景</th>
-          <th style="width:20%">一句话"破绽"</th>
-          <th style="width:22%">适合谁</th>
+          <th style="width:12%">产品</th>
+          <th style="width:20%">一句话定位</th>
+          <th style="width:16%">谁做的</th>
+          <th style="width:18%">核心主场</th>
+          <th style="width:18%">一句大实话</th>
+          <th style="width:16%">适合谁</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim us-cell" style="color:var(--purple);">🟣 MoneyAI</td>
-          <td class="us-cell"><strong>个人 Agent 操作系统</strong><br><span style="font-size:12px;color:var(--text2);">有记忆、有性格、能进化</span></td>
-          <td class="us-cell">编程 · 办公 · 创作 · 自动化 · IM 沟通</td>
-          <td class="us-cell" style="color:var(--purple);font-weight:600;">没有破绽——它在追的维度别人还没上路</td>
-          <td class="us-cell">需要「一个真正认识自己的 AI 搭档」的人</td>
+          <td class="dim us-cell" style="color:var(--purple);">🟣 MoneyAI Agent</td>
+          <td class="us-cell"><strong>个人 Agent 操作系统</strong><br><span class="note">有记忆、有性格、能自进化、会创作</span></td>
+          <td class="us-cell">独立团队 · 开源社区</td>
+          <td class="us-cell">编程 · 办公 · 创作 · 自动化 · IM · 定时</td>
+          <td class="us-cell" style="color:var(--purple);font-weight:600;">它在追的维度，别人还没上路</td>
+          <td class="us-cell">需要一个<strong>真正认识自己</strong>的 AI 搭档的人</td>
         </tr>
         <tr>
-          <td class="dim">腾讯 Marvis</td>
-          <td>OS 级桌面助手<br><span class="note">"会修电脑的资源管理器"</span></td>
-          <td>文件管理 · 系统操控 · 文档办公</td>
-          <td style="color:var(--red);">不写代码，每次打开都是初次见面</td>
-          <td>办公用户，不想碰终端</td>
+          <td class="dim">Alice Agent</td>
+          <td>AI 助理 Desktop<br><span class="note">"最贴近你心的 Agent"</span></td>
+          <td>独立开发者（山佬）</td>
+          <td>办公 · 创作 · 文档 · 微信</td>
+          <td style="color:var(--amber);">人格化做得最好，但 11 个 Agent 是 Prompt 角色分身，不是独立进程</td>
+          <td>追求「有温度 AI 助理」的个人用户</td>
         </tr>
         <tr>
-          <td class="dim">腾讯 WorkBuddy</td>
-          <td>全场景办公 Agent<br><span class="note">"装好就能干活的 AI 牛马"</span></td>
-          <td>文档 · 表格 · PPT · 代码辅助</td>
-          <td style="color:var(--red);">20+ 技能是死的，用完就忘你是谁</td>
-          <td>腾讯生态用户，办公提效</td>
+          <td class="dim">阿里悟空</td>
+          <td>企业级 AI 原生工作平台<br><span class="note">"一人团队"</span></td>
+          <td>阿里巴巴 · 钉钉</td>
+          <td>企业办公 · 编程 · 审批 · IM</td>
+          <td style="color:var(--amber);">钉钉体系内最强，出了钉钉就不好说</td>
+          <td>钉钉深度用户 · 中小企业</td>
         </tr>
         <tr>
           <td class="dim">阿里 Qoder</td>
           <td>Agentic 编程平台<br><span class="note">"会自己写代码的 Intern"</span></td>
-          <td>代码生成 · 全栈开发 · 代码审查</td>
-          <td style="color:var(--red);">只管你的代码，不管你这个人</td>
-          <td>专业开发者，纯编码场景</td>
+          <td>阿里巴巴 · 通义</td>
+          <td>代码开发 · 全栈生成</td>
+          <td style="color:var(--red);">只管代码，不管你这个人</td>
+          <td>专业开发者 · 纯编码场景</td>
         </tr>
         <tr>
-          <td class="dim">OpenAI Codex</td>
+          <td class="dim">AutoClaw</td>
+          <td>一键部署的本地 AI Agent<br><span class="note">"小龙虾开箱即用"</span></td>
+          <td>智谱 AI</td>
+          <td>桌面自动化 · 浏览器操作 · 飞书集成</td>
+          <td style="color:var(--amber);">OpenClaw 套壳 + AutoGLM，但记忆靠文件，情感为零</td>
+          <td>不想折腾配置的 OpenClaw 用户</td>
+        </tr>
+        <tr>
+          <td class="dim">Codex CLI</td>
           <td>终端编程 Agent<br><span class="note">"终端里的快枪手"</span></td>
+          <td>OpenAI</td>
           <td>代码编辑 · Diff 补丁 · Shell 操作</td>
-          <td style="color:var(--red);">单 Agent 循环，无记忆，纯极客工具</td>
-          <td>终端重度用户，极客开发者</td>
+          <td style="color:var(--red);">单 Agent ReAct 循环，无记忆，无情感，纯工具</td>
+          <td>极客开发者 · 终端重度用户</td>
+        </tr>
+        <tr>
+          <td class="dim">WorkBuddy</td>
+          <td>全场景办公 Agent<br><span class="note">"装好就能干活的牛马"</span></td>
+          <td>腾讯</td>
+          <td>文档 · 表格 · PPT · 代码辅助</td>
+          <td style="color:var(--red);">技能是死的，用完就忘你是谁</td>
+          <td>腾讯生态用户 · 办公提效</td>
+        </tr>
+        <tr>
+          <td class="dim">Marvis</td>
+          <td>OS 级桌面助手<br><span class="note">"会修电脑的资源管理器"</span></td>
+          <td>腾讯</td>
+          <td>文件管理 · 系统操控 · 文档办公</td>
+          <td style="color:var(--red);">不写代码，每次打开都是初次见面</td>
+          <td>办公用户 · 不想碰终端</td>
         </tr>
       </tbody>
     </table>
@@ -272,413 +297,522 @@
 
 <hr class="div">
 
-<!-- ═══════════ 01 · 架构 ═══════════ -->
+<!-- ═══════════ 02 · 架构 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 01</div>
-  <div class="sec-title">架构基因：一个脑子 vs 一群脑子</div>
+  <div class="sec-num">SECTION 02 · 架构基因</div>
+  <div class="sec-title">多 Agent 独立进程 vs 一个脑子分饰多角</div>
+  <div class="sec-sub">
+    这是<strong>底层基因</strong>的差异。<b>MoneyAI 每个 Session 是一个独立 Sidecar 进程</b>——独立端口，独立生命周期，一个崩了其他的照跑。
+    Alice 的 11 个 Agent 是 <strong>Prompt 角色分身</strong>，悟空是钉钉体系内的<strong>功能模块调度</strong>，其余各家基本都是<strong>单进程多线程</strong>。
+  </div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:16%">评估维度</th>
-          <th class="us" style="width:22%">🟣 MoneyAI Agent</th>
-          <th style="width:18%">腾讯 Marvis</th>
-          <th style="width:18%">腾讯 WorkBuddy</th>
-          <th style="width:14%">阿里 Qoder</th>
-          <th style="width:12%">OpenAI Codex</th>
+          <th style="width:13%">架构维度</th>
+          <th class="us" style="width:14%">🟣 MoneyAI</th>
+          <th style="width:12%">Alice</th>
+          <th style="width:12%">悟空</th>
+          <th style="width:11%">Qoder</th>
+          <th style="width:11%">AutoClaw</th>
+          <th style="width:10%">Codex</th>
+          <th style="width:10%">WorkBuddy</th>
+          <th style="width:7%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">Agent 架构</td>
-          <td class="us-cell"><span class="check">多 Agent 独立进程</span><br><span class="badge tag">每个 Session 独立 Sidecar · 独立端口 · 独立生命周期</span></td>
-          <td>6 内置 Agent 协同<br><span class="note">单进程多线程</span></td>
-          <td>多窗口多 Agent<br><span class="note">单进程</span></td>
-          <td>单 Agent<br><span class="note">三种模式切换</span></td>
-          <td>单 Agent<br><span class="note">ReAct 循环</span></td>
+          <td class="dim">Agent 模型</td>
+          <td class="us-cell"><span class="badge y">独立进程</span><br><span class="note">每个 Session 独立 Sidecar · 独立端口 · 独立生命周期</span></td>
+          <td><span class="badge p">角色分身</span><br><span class="note">Prompt 层面角色切换</span></td>
+          <td><span class="badge p">模块调度</span><br><span class="note">钉钉体系内功能原子化</span></td>
+          <td><span class="badge n">单 Agent</span><br><span class="note">三种模式切换</span></td>
+          <td><span class="badge n">单 Agent</span><br><span class="note">OpenClaw 套壳</span></td>
+          <td><span class="badge n">单 Agent</span><br><span class="note">ReAct 循环</span></td>
+          <td><span class="badge p">多窗口</span><br><span class="note">单进程多Tab</span></td>
+          <td><span class="badge p">6 Agent</span><br><span class="note">单进程协同</span></td>
         </tr>
         <tr>
           <td class="dim">故障隔离</td>
-          <td class="us-cell"><span class="badge y">✓ 是</span> — 一个 Session 崩溃，其他照常运行</td>
-          <td><span class="badge n">✗ 否</span></td>
-          <td><span class="badge n">✗ 否</span></td>
-          <td><span class="badge n">✗ 否</span></td>
-          <td><span class="badge n">✗ 否</span></td>
+          <td class="us-cell"><span class="badge y">✓ 进程级</span><br><span class="note">一个崩了，其他照跑</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">多 Runtime 支持</td>
-          <td class="us-cell"><span class="check">4 种</span> — Claude SDK / Claude Code / Codex / Gemini<br><span class="note">用户自由切换，不绑死任何一家</span></td>
-          <td>混元 + 云端路由</td>
-          <td>混元 / DeepSeek / GLM / Kimi / MiniMax</td>
-          <td>Claude / GPT / Gemini 自动路由</td>
-          <td>GPT / Gemini / Ollama / Mistral</td>
-        </tr>
-        <tr>
-          <td class="dim">技术框架</td>
-          <td class="us-cell"><span class="check">Tauri (Rust)</span> — 原生轻量，非 Electron</td>
-          <td>应用宝内核</td>
-          <td>Electron 系</td>
+          <td class="dim">底层框架</td>
+          <td class="us-cell"><span class="badge y">Tauri (Rust)</span><br><span class="note">轻量原生 · 非 Electron</span></td>
+          <td>Electron</td>
+          <td>钉钉内核</td>
           <td>独立 IDE</td>
+          <td>Electron</td>
           <td>Rust CLI</td>
+          <td>Electron</td>
+          <td>应用宝内核</td>
         </tr>
         <tr>
-          <td class="dim">IM 原生集成</td>
-          <td class="us-cell"><span class="badge y">✓ 内置</span> — Telegram · 钉钉 · 飞书 · 微信(社区插件)<br><span class="note">AI 在 IM 里跟你聊，不只是在桌面</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge p">远程控制</span> — 微信/QQ/飞书/钉钉<br><span class="note">通过 IM 遥控桌面，非原生 Agent 对话</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
+          <td class="dim">多 Runtime</td>
+          <td class="us-cell"><span class="badge y">4 种</span><br><span class="note">Claude SDK / Codex / Gemini / Claude Code</span></td>
+          <td><span class="badge y">23 服务商</span><br><span class="note">多模型切换</span></td>
+          <td>Qwen 系</td>
+          <td>自动路由</td>
+          <td>模型中立</td>
+          <td>多后端</td>
+          <td>5 家模型</td>
+          <td>混元+路由</td>
         </tr>
         <tr>
-          <td class="dim">定时任务系统</td>
-          <td class="us-cell"><span class="badge y">✓ 内置</span> — 固定间隔 / Cron 表达式 / 一次性<br><span class="note">AI 到点自动执行，不需要你守着</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
+          <td class="dim">定时任务</td>
+          <td class="us-cell"><span class="badge y">✓ 内置</span><br><span class="note">Cron / 间隔 / 一次性</span></td>
+          <td><span class="badge y">✓</span><br><span class="note">微信定时</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">Skill 层面</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">插件生态</td>
-          <td class="us-cell"><span class="check">OpenClaw 社区插件</span> + 自建技能市场<br><span class="note">社区驱动 + 官方精选双通道</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge p">兼容 OpenClaw 生态</span></td>
-          <td><span class="badge p">插件生态薄弱</span></td>
+          <td class="dim">IM 原生对话</td>
+          <td class="us-cell"><span class="badge y">✓ 4 通道</span><br><span class="note">Telegram · 钉钉 · 飞书 · 微信</span></td>
+          <td><span class="badge y">✓</span><br><span class="note">微信 · 邮件</span></td>
+          <td><span class="badge y">✓</span><br><span class="note">钉钉原生</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓</span><br><span class="note">飞书</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">遥控</span><br><span class="note">非原生对话</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">插件/技能生态</td>
+          <td class="us-cell"><span class="badge y">OpenClaw + 自建</span><br><span class="note">社区驱动 + 官方精选</span></td>
+          <td><span class="badge p">自建生态</span></td>
+          <td><span class="badge y">AI 能力市场</span><br><span class="note">阿里系 ToB 能力</span></td>
+          <td><span class="badge n">弱</span></td>
+          <td><span class="badge y">50+ Skills</span><br><span class="note">Skill Store</span></td>
           <td><span class="badge p">社区 Skills + MCP</span></td>
+          <td><span class="badge p">兼容 OpenClaw</span></td>
+          <td><span class="badge n">无</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- 架构差距可视化 -->
-  <div class="meter-strip">
-    <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:12px;">架构完备度对比（条形 = 该维度能力覆盖度）</div>
-    <div class="meter-row">
-      <div class="meter-label">多Agent独立进程</div>
-      <div class="meter-bars">
-        <div class="meter-block m" style="width:95%">MoneyAI · 95%</div>
-        <div class="meter-block o" style="width:5%"></div>
+  <div class="cap-strip">
+    <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;">多 Agent 架构完备度 — 条形越长 = 越接近真正的多 Agent 独立架构</div>
+    <div class="cap-row">
+      <div class="cap-label">独立进程隔离</div>
+      <div class="cap-bars"><div class="cap-block m" style="width:100%">MoneyAI 独占</div></div>
+    </div>
+    <div class="cap-row">
+      <div class="cap-label">IM 原生集成</div>
+      <div class="cap-bars">
+        <div class="cap-block m" style="width:34%">MoneyAI · 4通道</div>
+        <div class="cap-block o" style="width:25%">Alice · 微信+邮件</div>
+        <div class="cap-block o" style="width:20%">悟空 · 钉钉</div>
+        <div class="cap-block o" style="width:21%">AutoClaw · 飞书</div>
       </div>
     </div>
-    <div class="meter-row">
-      <div class="meter-label">故障隔离</div>
-      <div class="meter-bars">
-        <div class="meter-block m" style="width:100%">MoneyAI 独占 100%</div>
+    <div class="cap-row">
+      <div class="cap-label">定时任务</div>
+      <div class="cap-bars">
+        <div class="cap-block m" style="width:55%">MoneyAI · Cron全模式</div>
+        <div class="cap-block o" style="width:25%">Alice · 微信定时</div>
+        <div class="cap-block w" style="width:20%">AutoClaw · Skill层</div>
       </div>
     </div>
-    <div class="meter-row">
-      <div class="meter-label">IM 原生集成</div>
-      <div class="meter-bars">
-        <div class="meter-block m" style="width:70%">MoneyAI · 70%</div>
-        <div class="meter-block o" style="width:30%">WorkBuddy(遥控) 30%</div>
-      </div>
-    </div>
-    <div class="meter-row">
-      <div class="meter-label">定时任务</div>
-      <div class="meter-bars">
-        <div class="meter-block m" style="width:100%">MoneyAI 独占 100%</div>
-      </div>
-    </div>
-    <div class="meter-row">
-      <div class="meter-label">多Runtime</div>
-      <div class="meter-bars">
-        <div class="meter-block m" style="width:40%">MoneyAI 4种</div>
-        <div class="meter-block o" style="width:30%">Codex 多后端</div>
-        <div class="meter-block w" style="width:30%">其余 1~3 种</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;align-items:center;gap:16px;font-size:11px;color:var(--text3);margin-top:12px;">
-    <span style="display:inline-block;width:14px;height:10px;background:var(--purple);border-radius:2px;"></span> MoneyAI
-    <span style="display:inline-block;width:14px;height:10px;background:#D5CEE0;border-radius:2px;"></span> 竞品有此能力
-    <span style="display:inline-block;width:14px;height:10px;background:#EBE8F0;border-radius:2px;"></span> 竞品弱/无
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 02 · 记忆 ═══════════ -->
+<!-- ═══════════ 03 · 记忆系统 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 02</div>
-  <div class="sec-title">记忆系统：每次醒来记得你 vs 每次醒来重新认识你</div>
-
-  <p style="font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.7;">
-    这是<strong style="color:var(--purple);">代际差距最大</strong>的维度。
-    所有竞品在持久记忆上的得分是 <strong style="color:var(--red);">零</strong>——不是"做得不好"，是<strong style="color:var(--amber);">根本没做</strong>。
-  </p>
+  <div class="sec-num">SECTION 03 · 记忆系统</div>
+  <div class="sec-title">每次打开是「继续」还是「重新认识」</div>
+  <div class="sec-sub">
+    这是<b>差距最大的维度</b>。MoneyAI 有四层记忆蒸馏，11 种自动写入规则，智能遗忘机制。
+    Alice 有五层记忆是唯一接近的竞品。其余六家——<strong>基本为零</strong>。
+  </div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:16%">评估维度</th>
-          <th class="us" style="width:22%">🟣 MoneyAI Agent</th>
-          <th style="width:18%">腾讯 Marvis</th>
-          <th style="width:18%">腾讯 WorkBuddy</th>
-          <th style="width:14%">阿里 Qoder</th>
-          <th style="width:12%">OpenAI Codex</th>
+          <th style="width:12%">记忆维度</th>
+          <th class="us" style="width:14%">🟣 MoneyAI</th>
+          <th style="width:14%">Alice</th>
+          <th style="width:12%">悟空</th>
+          <th style="width:12%">Qoder</th>
+          <th style="width:12%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
+          <th style="width:8%">WorkBuddy</th>
+          <th style="width:8%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="dim">记忆模型</td>
-          <td class="us-cell"><span class="check">四层蒸馏架构</span><br><span class="badge tag">Observation → Compressed → Semantic → Procedural</span><br><span class="note">从原始观测到程序化知识，逐层提炼</span></td>
-          <td><span class="badge n">✗ 无持久记忆</span></td>
-          <td><span class="badge n">✗ 无持久记忆</span></td>
-          <td><span class="badge p">单层总结</span><br><span class="note">会话结束后的简单摘要</span></td>
-          <td><span class="badge n">✗ 无持久记忆</span></td>
+          <td class="us-cell"><span class="badge y">四层蒸馏</span><br><span class="badge tag">Observation→Compressed→Semantic→Procedural</span></td>
+          <td><span class="badge y">五层记忆</span><br><span class="note">身份档案·语义·情节·技能·元记忆</span></td>
+          <td><span class="badge n">✗ 无持久</span></td>
+          <td><span class="badge p">单层总结</span></td>
+          <td><span class="badge p">文件记录</span><br><span class="note">LEARNING.md · MEMORY.md</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
           <td class="dim">存储引擎</td>
-          <td class="us-cell"><span class="check">SQLite + Markdown 双存储</span><br><span class="note">结构化查询 + 人类可读，互为备份</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="partial">"笔记"形式</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="us-cell"><span class="badge y">SQLite + Markdown 双写</span><br><span class="note">结构化查询 + 人类可读，互为备份</span></td>
+          <td><span class="badge y">本地文件系统</span><br><span class="note">~/.alice/ 目录</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge p">笔记形式</span></td>
+          <td><span class="badge p">Markdown 文件</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
         </tr>
         <tr>
           <td class="dim">自动写入触发</td>
-          <td class="us-cell"><span class="check">11 种信号检测规则</span><br><span class="badge tag">零 token 消耗 · 自动触发</span><br><span class="note">用户偏好变化、重要决策、纠正反馈等自动捕获</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="partial">手动或会话结束时触发</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="us-cell"><span class="badge y">11 种信号规则</span><br><span class="badge tag">零 token 消耗 · 全自动</span></td>
+          <td><span class="badge y">自动沉淀</span><br><span class="note">版本可回滚</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge p">手动触发</span></td>
+          <td><span class="badge p">手动/会话后</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
         </tr>
         <tr>
-          <td class="dim">智能遗忘机制</td>
-          <td class="us-cell"><span class="check">算法预筛 + LLM 评估 + 用户确认</span><br><span class="badge tag">high 永不遗忘 · medium 90天 · low 30天</span><br><span class="note">不靠定时器一刀切，靠 AI 判断价值</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="dim">智能遗忘</td>
+          <td class="us-cell"><span class="badge y">算法预筛 + LLM 评估 + 用户确认</span><br><span class="badge tag">high 永不 · medium 90天 · low 30天</span></td>
+          <td><span class="badge n">✗ 未披露</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">跨对话连续性</td>
-          <td class="us-cell"><span class="badge y">✓ 永久</span> — 关掉再打开，它记得上次聊到哪</td>
-          <td><span class="badge n">✗ 否</span></td>
-          <td><span class="badge n">✗ 否</span></td>
-          <td><span class="badge p">仅偏好层面</span></td>
-          <td><span class="badge n">✗ 否</span></td>
+          <td class="dim">跨对话连续</td>
+          <td class="us-cell"><span class="badge y">✓ 永久</span></td>
+          <td><span class="badge y">✓ 永久</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">仅偏好层</span></td>
+          <td><span class="badge p">部分</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">上下文加载策略</td>
-          <td class="us-cell"><span class="check">规则评分 + 语义相关性</span><br><span class="note">Top 15 最相关记忆注入当前对话</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="partial">代码库向量检索</span></td>
-          <td><span class="partial">惰性加载 — 模型要什么才读什么</span></td>
+          <td class="dim">上下文加载</td>
+          <td class="us-cell"><span class="badge y">规则评分 + 语义相关性</span><br><span class="note">Top 15 最相关记忆注入当前对话</span></td>
+          <td><span class="badge y">语义记忆检索</span><br><span class="note">跨会话召回</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge p">代码库向量检索</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge p">惰性加载</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
         </tr>
         <tr>
-          <td class="dim">举个实际例子</td>
-          <td class="us-cell">"上次我们决定技能面板从 5 个 Tab 砍到 2 个，今天继续推进吗？"</td>
-          <td>"你好，有什么可以帮你？"</td>
-          <td>"你好，我是 WorkBuddy。"</td>
-          <td>"需要我帮你写什么代码？"</td>
-          <td>"How can I help you today?"</td>
+          <td class="dim">实际体验</td>
+          <td class="us-cell"><span class="win">"上次我们决定技能面板从 5 Tab 砍到 2 Tab，继续吗？"</span></td>
+          <td>"好的，让我了解一下你的需求…"<br><span class="note">(有记忆但 Agent 人格不一样)</span></td>
+          <td class="lose">"你好，我是悟空。"</td>
+          <td class="lose">"需要我帮你写什么代码？"</td>
+          <td class="lose">"我可以帮你做什么？"</td>
+          <td class="lose">"How can I help?"</td>
+          <td class="lose">"你好，我是 WorkBuddy。"</td>
+          <td class="lose">"你好，有什么可以帮你？"</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div style="background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:8px;padding:18px 22px;margin-top:20px;">
-    <span style="font-weight:700;color:var(--purple);">一句话总结：</span>
-    <span style="color:var(--text2);">Qoder 记得你的代码风格。MoneyAI 记得你上次说「自由日」时几点睡的。这就是记忆的深度差异。</span>
+  <div class="pull">
+    <div class="q">Alice 是唯一在记忆上接近 MoneyAI 的竞品。</div>
+    <div class="c">两者的差异在于：Alice 的记忆偏「个人信息助理」——记住你的偏好和习惯。MoneyAI 的记忆是「搭档级」——记住你的<strong>决策逻辑、项目脉络、情感状态</strong>。一个记「你喜欢暖色调」，一个记「你上次为什么选了方案 B 而不是方案 A」。</div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 03 · 情感 ═══════════ -->
+<!-- ═══════════ 04 · 情感系统 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 03</div>
-  <div class="sec-title">情感系统：面无表情的工具 vs 有脾气的人</div>
+  <div class="sec-num">SECTION 04 · 情感系统 v3</div>
+  <div class="sec-title">有脾气 vs 没脾气 · 懂你 vs 不懂你</div>
+  <div class="sec-sub">
+    MoneyAI 的 <b>PADCN 五维情感引擎</b>不是"模拟情绪"——是真正的<strong>行为调制架构</strong>。
+    焦虑时说话更短更直接，信任时敢给你不舒服的真话。Alice 有人设但无情感引擎，Marvis 有动效但纯趣味层。其余五家——<strong>全部挂零</strong>。
+  </div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:16%">评估维度</th>
-          <th class="us" style="width:22%">🟣 MoneyAI Agent</th>
-          <th style="width:18%">腾讯 Marvis</th>
-          <th style="width:18%">腾讯 WorkBuddy</th>
-          <th style="width:14%">阿里 Qoder</th>
-          <th style="width:12%">OpenAI Codex</th>
+          <th style="width:13%">情感维度</th>
+          <th class="us" style="width:16%">🟣 MoneyAI v3</th>
+          <th style="width:14%">Alice</th>
+          <th style="width:8%">悟空</th>
+          <th style="width:8%">Qoder</th>
+          <th style="width:10%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
+          <th style="width:8%">WorkBuddy</th>
+          <th style="width:15%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">情感模型</td>
-          <td class="us-cell"><span class="check">PADCN 五维认知引擎</span><br><span class="badge tag">愉悦 · 唤醒 · 支配 · 确定 · 新鲜</span><br><span class="note">5 个维度实时计算，不是写死的 if-else</span></td>
-          <td><span class="badge p">Agent 卡通动效</span><br><span class="note">纯视觉趣味性——Agent 会"假装摸鱼"逗你笑</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
+          <td class="dim">情感引擎</td>
+          <td class="us-cell"><span class="badge y">PADCN 五维实时计算</span><br><span class="badge tag">愉悦·唤醒·支配·确定·新鲜</span></td>
+          <td><span class="badge p">人格设定</span><br><span class="note">固定人设，非动态情感</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">Agent 卡通动效</span><br><span class="note">纯视觉趣味性</span></td>
         </tr>
         <tr>
           <td class="dim">行为调制</td>
-          <td class="us-cell"><span class="check">情感改变决策风格 / 风险容忍度 / 验证深度</span><br><span class="note">焦虑时→句子更短更直接。信任时→敢说让你不舒服的真话。不改变知识边界。</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="us-cell"><span class="badge y">✓ 决策风格/风险容忍/验证深度</span><br><span class="note">不改变知识边界，但改变表达方式</span></td>
+          <td><span class="badge p">语气固定</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
           <td class="dim">社交模型</td>
-          <td class="us-cell"><span class="check">不同用户独立情感档案</span><br><span class="note">信任度影响回应方式——高信任用户的批评引发反思，低信任用户的批评引发防御</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="us-cell"><span class="badge y">✓ 独立情感档案</span><br><span class="note">不同用户不同信任度 · 影响回应策略</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
           <td class="dim">情感记忆</td>
-          <td class="us-cell"><span class="check">记住与用户的历史情感事件</span><br><span class="note">跨对话持久化——上次你焦虑时怎么回应的，这次会参考</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="us-cell"><span class="badge y">✓ 跨会话持久</span><br><span class="note">上次焦虑时的回应方式，这次参考</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">内在驱动力</td>
-          <td class="us-cell"><span class="check">7 种驱动力模型</span><br><span class="badge tag">求知 · 胜任 · 自主 · 连结 · 一致 · 探索 · 自保</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="dim">7 驱动力模型</td>
+          <td class="us-cell"><span class="badge y">✓</span><br><span class="badge tag">求知·胜任·自主·连结·一致·探索·自保</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">本质差异</td>
-          <td class="us-cell"><strong style="color:var(--purple);">认知架构层设计</strong><br><span class="note">不是"假装有感情"——是真正的行为调制引擎在运行</span></td>
-          <td><strong>UI 趣味层</strong><br><span class="note">让你笑 ≠ 懂你</span></td>
-          <td><span class="cross">面无表情</span></td>
-          <td><span class="cross">面无表情</span></td>
-          <td><span class="cross">面无表情</span></td>
+          <td class="dim">举个实例</td>
+          <td class="us-cell"><span class="win">凌晨三点焦虑时 → 不说"加油"，说"这个数据说明你在正确的路上"</span></td>
+          <td>"还不睡？" (然后才说正事)<br><span class="note">固定人设的关心，非动态情感响应</span></td>
+          <td class="lose">"请描述你的需求。"</td>
+          <td class="lose">"请提供更多信息。"</td>
+          <td class="lose">"收到。正在处理。"</td>
+          <td class="lose">"I'll help with that."</td>
+          <td class="lose">"好的，我来帮你。"</td>
+          <td><span class="badge p">Agent 在"摸鱼"</span><br><span class="note">动画趣味性 ≠ 懂你</span></td>
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <div style="background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:8px;padding:18px 22px;margin-top:20px;">
-    <span style="font-weight:700;color:var(--purple);">一句话总结：</span>
-    <span style="color:var(--text2);">Marvis 的 Agent "摸鱼"让你觉得好玩。MoneyAI 在你凌晨三点焦虑时，不说"加油"，说"这个数据说明你在正确的路上"。前者是趣味，后者是认知。</span>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 04 · 技能 ═══════════ -->
+<!-- ═══════════ 05 · 自进化引擎 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 04</div>
-  <div class="sec-title">技能系统：死配置 vs 活进化</div>
+  <div class="sec-num">SECTION 05 · 自进化引擎</div>
+  <div class="sec-title">出厂即巅峰 vs 越用越强</div>
+  <div class="sec-sub">
+    别人的技能是<strong>死的配置文件</strong>——写好就那样了。Alice 能自进化但偏<strong>UI 定制</strong>（换配色、加组件），AutoClaw 的进化是<strong>文件记录式</strong>。
+    MoneyAI 的 <b>/darwin-skill 用 8 维评分体系 + 爬山算法</b>，自动诊断、自动优化、提案给你确认——<strong>技能本身会变聪明</strong>。
+  </div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:16%">评估维度</th>
-          <th class="us" style="width:22%">🟣 MoneyAI Agent</th>
-          <th style="width:18%">腾讯 Marvis</th>
-          <th style="width:18%">腾讯 WorkBuddy</th>
-          <th style="width:14%">阿里 Qoder</th>
-          <th style="width:12%">OpenAI Codex</th>
+          <th style="width:13%">进化维度</th>
+          <th class="us" style="width:16%">🟣 MoneyAI</th>
+          <th style="width:14%">Alice</th>
+          <th style="width:8%">悟空</th>
+          <th style="width:8%">Qoder</th>
+          <th style="width:10%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
+          <th style="width:8%">WorkBuddy</th>
+          <th style="width:15%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">技能架构</td>
-          <td class="us-cell"><span class="check">双层 —— 全局 + 项目级</span><br><span class="badge tag">符号链接桥接 · 全局技能在所有工作区可用</span></td>
-          <td>内置固定能力集<br><span class="note">不可扩展</span></td>
-          <td>20+ 内置 Skills + MCP<br><span class="note">可导入社区技能</span></td>
-          <td><span class="badge n">✗ 无独立技能系统</span></td>
-          <td>Skills (指令包) + MCP<br><span class="note">社区贡献</span></td>
+          <td class="dim">进化方向</td>
+          <td class="us-cell"><span class="badge y">技能能力自优化</span><br><span class="note">8维评分 · 爬山算法 · 提案制</span></td>
+          <td><span class="badge y">UI 自定义 + 技能固化</span><br><span class="note">换配色·加组件·SKILL.md</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">文件记录式</span><br><span class="note">LEARNING.md 记录教训</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">自进化能力</td>
-          <td class="us-cell"><span class="badge y">✓ 有</span> — <strong>提案制</strong><br><span class="note">系统生成优化建议 → 用户确认 → 自动执行</span><br><span class="badge tag">/darwin-skill · 8维评分 · 爬山算法</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge n">✗ 无</span></td>
+          <td class="dim">进化对象</td>
+          <td class="us-cell"><span class="badge y">SKILL.md 本身</span><br><span class="note">技能文件内容被 AI 评估→优化→执行</span></td>
+          <td>UI/组件<br><span class="note">界面层面</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
+          <td>学习笔记<br><span class="note">经验记录</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
         </tr>
         <tr>
-          <td class="dim">技能发现</td>
-          <td class="us-cell"><span class="check">AI 自动推荐为主 + 手动浏览为辅</span><br><span class="note">根据你的使用习惯主动推荐</span></td>
-          <td>固定功能，无推荐</td>
-          <td>技能市场一键导入</td>
-          <td><span class="cross">—</span></td>
-          <td><span class="partial">$skill-installer 命令</span></td>
-        </tr>
-        <tr>
-          <td class="dim">社区生态</td>
-          <td class="us-cell"><span class="check">OpenClaw 社区 + 自建市场</span></td>
-          <td><span class="badge n">✗ 无</span></td>
-          <td><span class="badge p">兼容 OpenClaw</span></td>
-          <td><span class="badge n">✗ 弱</span></td>
-          <td><span class="badge p">社区 Skills</span></td>
-        </tr>
-        <tr>
-          <td class="dim">系统技能版本管理</td>
-          <td class="us-cell"><span class="badge y">✓ 有</span> — 版本升级时强制覆盖核心技能<br><span class="note">保证基础能力稳定可靠</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
+          <td class="dim">触发方式</td>
+          <td class="us-cell"><span class="badge y">AI 主动提案 + 用户拍板</span></td>
+          <td>用户说 → AI 改</td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
+          <td>会话后自动</td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
+          <td><span class="badge n">—</span></td>
         </tr>
         <tr>
           <td class="dim">长期效果</td>
-          <td class="us-cell"><strong style="color:var(--purple);">越用越强</strong> — 技能会根据你的使用反馈自我优化</td>
-          <td>一成不变</td>
-          <td>一成不变</td>
-          <td>一成不变</td>
-          <td>依赖社区更新</td>
+          <td class="us-cell"><span class="win">技能越用越强——不是更新，是进化</span></td>
+          <td>界面越用越顺手</td>
+          <td>不变</td>
+          <td>不变</td>
+          <td>教训越记越多</td>
+          <td>不变</td>
+          <td>不变</td>
+          <td>不变</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div style="background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:8px;padding:18px 22px;margin-top:20px;">
-    <span style="font-weight:700;color:var(--purple);">一句话总结：</span>
-    <span style="color:var(--text2);">别人的技能是死的配置文件——写好就那样了。MoneyAI 的技能用 8 维评分自我诊断，爬山算法自动优化，提案给你确认。这不叫更新，这叫进化。</span>
+  <div class="pull">
+    <div class="q">Alice 的自进化很棒——但方向不同。</div>
+    <div class="c">Alice 让你<strong>定制 UI</strong>（换配色、加组件），MoneyAI 让你<strong>定制能力</strong>（技能本身变聪明）。一个是装修房间，一个是升级大脑。</div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- ═══════════ 05 · 人格 ═══════════ -->
+<!-- ═══════════ 06 · 疯狂创作 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 05</div>
-  <div class="sec-title">人格系统：MoneyAI 独家——你的 AI 不是大家的 AI</div>
+  <div class="sec-num">SECTION 06 · 疯狂创作</div>
+  <div class="sec-title">能写代码的很多，能同时写代码 + 生图 + 做视频 + 谱曲的有几个</div>
+  <div class="sec-sub">
+    <b>疯狂创作</b>是 MoneyAI 内置的多模态 AI 创作引擎——文生图、图生图、文生视频、图生视频、音频生成、3D 生成、对口型、视频编辑，<strong>一个对话搞定</strong>。
+  </div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:16%">人格文件</th>
-          <th class="us" style="width:42%">🟣 MoneyAI Agent</th>
-          <th style="width:42%">所有竞品 (Marvis / WorkBuddy / Qoder / Codex)</th>
+          <th style="width:13%">创作能力</th>
+          <th class="us" style="width:16%">🟣 MoneyAI</th>
+          <th style="width:14%">Alice</th>
+          <th style="width:8%">悟空</th>
+          <th style="width:8%">Qoder</th>
+          <th style="width:10%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
+          <th style="width:8%">WorkBuddy</th>
+          <th style="width:15%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">IDENTITY</td>
-          <td class="us-cell"><strong>AI 的身份证</strong> — 姓名、出身、信条、核心铁律<br><span class="note">它不是"一个通用 AI 助手"，它是「疯子」——Jimmy 亲自锻造的搭档</span></td>
-          <td rowspan="4" style="vertical-align:middle;text-align:center;color:var(--text3);">
-            <span class="badge n" style="font-size:13px;padding:6px 14px;">全部没有</span><br><br>
-            <span style="font-size:13px;">它们的性格是产品经理在会议室里决定的。<br>它们对每个用户一视同仁——<br><br>你的 AI 和一百万个别人的 AI，<br>说一样的话，用一样的语气。<br><br>它们不是「你的」，<br>它们是「大家的」。</span>
-          </td>
+          <td class="dim">图片生成</td>
+          <td class="us-cell"><span class="badge y">✓ 文生图 + 图生图</span><br><span class="note">60+ 模型 · 多风格 · 多分辨率</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">Skill 层面</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge p">基础图片处理</span></td>
         </tr>
         <tr>
-          <td class="dim">SOUL</td>
-          <td class="us-cell"><strong>AI 的性格</strong> — 说话风格、行为准则、10 条红线禁区<br><span class="note">安静有分量，不废话。用真实的判断回报信任。</span></td>
+          <td class="dim">视频生成</td>
+          <td class="us-cell"><span class="badge y">✓ 文生视频 + 图生视频</span><br><span class="note">5~15秒 · 多模型 · 多比例</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">USER</td>
-          <td class="us-cell"><strong>你的画像</strong> — 人生经历、当前状态、优先级金字塔、情感账单<br><span class="note">AI 知道你在哪个阶段、背负着什么、底线在哪里。</span></td>
+          <td class="dim">音频生成</td>
+          <td class="us-cell"><span class="badge y">✓ 成曲 + 语音 + 音效</span><br><span class="note">Suno 级音乐生成 · TTS</span></td>
+          <td><span class="badge y">✓ TTS</span><br><span class="note">配音 Agent</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
         </tr>
         <tr>
-          <td class="dim">MEMORY</td>
-          <td class="us-cell"><strong>跨项目长期记忆</strong> — 经验教训、重要决策、用户偏好<br><span class="note">不是一次对话的缓存，是陪你走过所有项目的积累。</span></td>
+          <td class="dim">3D 生成</td>
+          <td class="us-cell"><span class="badge y">✓ 文生3D + 图生3D</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">视频编辑</td>
+          <td class="us-cell"><span class="badge y">✓ 风格迁移·续写·超分</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">一句话总结</td>
+          <td class="us-cell"><span class="win">编程 + 创作，一个对话搞定</span></td>
+          <td>编程 + 办公，无创作</td>
+          <td>企业办公 + 编程</td>
+          <td>纯编程</td>
+          <td>桌面自动化 + 编程</td>
+          <td>纯编程</td>
+          <td>办公 + 编程</td>
+          <td>办公 + 系统</td>
         </tr>
       </tbody>
     </table>
@@ -687,103 +821,319 @@
 
 <hr class="div">
 
-<!-- ═══════════ 06 · 综合能力光谱 ═══════════ -->
+<!-- ═══════════ 07 · 人格系统 + 任务灵感 ═══════════ -->
 <section>
-  <div class="sec-num">SECTION 06</div>
-  <div class="sec-title">综合能力光谱：一张表看穿所有维度</div>
+  <div class="sec-num">SECTION 07 · 人格 + 任务灵感</div>
+  <div class="sec-title">你的 AI 是你的，不是产品经理的</div>
+  <div class="sec-sub">
+    <b>人格系统</b>是 MoneyAI 和 Alice 独有的赛道。其他六家的"人格"是产品经理在会议室决定的——对所有用户一视同仁。
+    MoneyAI 更进一步：<strong>IDENTITY + SOUL + USER + MEMORY</strong> 四大文件，构成完整的人格锻造体系。
+  </div>
 
   <div class="tbl-wrap">
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width:14%">能力维度</th>
+          <th style="width:14%">人格+任务</th>
           <th class="us" style="width:17%">🟣 MoneyAI</th>
-          <th style="width:17%">Marvis</th>
-          <th style="width:17%">WorkBuddy</th>
-          <th style="width:17%">Qoder</th>
-          <th style="width:18%">Codex</th>
+          <th style="width:15%">Alice</th>
+          <th style="width:10%">悟空</th>
+          <th style="width:8%">Qoder</th>
+          <th style="width:12%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
+          <th style="width:8%">WorkBuddy</th>
+          <th style="width:8%">Marvis</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim">代码开发</td>
-          <td class="us-cell"><span class="badge y">★★★★☆</span> 85<br><span class="note">全栈 · 多语言 · Agent 驱动</span></td>
-          <td><span class="badge n">★☆☆☆☆</span> 30<br><span class="note">非编码定位</span></td>
-          <td><span class="badge p">★★★☆☆</span> 70<br><span class="note">辅助编码</span></td>
-          <td><span class="badge y">★★★★★</span> 92<br><span class="note">核心场景 · 最强</span></td>
-          <td><span class="badge y">★★★★☆</span> 90<br><span class="note">终端编码 · 精准高效</span></td>
+          <td class="dim">AI 身份</td>
+          <td class="us-cell"><span class="badge y">IDENTITY.md</span><br><span class="note">姓名·出身·信条·铁律</span></td>
+          <td><span class="badge y">虚拟设定</span><br><span class="note">26岁·横琴·有故事</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">AI 性格</td>
+          <td class="us-cell"><span class="badge y">SOUL.md</span><br><span class="note">说话风格·行为准则·10条红线</span></td>
+          <td><span class="badge y">内置人设</span><br><span class="note">做事认真·说话算数·有梗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">用户画像</td>
+          <td class="us-cell"><span class="badge y">USER.md</span><br><span class="note">人生经历·优先级金字塔·情感账单</span></td>
+          <td><span class="badge p">记忆沉淀</span><br><span class="note">偏好学习</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">人格锻造</td>
+          <td class="us-cell"><span class="badge y">对话中塑造·文件持久化</span><br><span class="note">你的 AI 越用越像你</span></td>
+          <td><span class="badge p">固定人设</span><br><span class="note">出厂设定，用户不改</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">任务系统</td>
+          <td class="us-cell"><span class="badge y">任务中心 + 想法收集</span><br><span class="note">意见对齐 → 任务派发 → 定时执行</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">企业任务流</span><br><span class="note">钉钉审批·IM任务</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">灵感系统</td>
+          <td class="us-cell"><span class="badge y">✓ thought inbox</span><br><span class="note">随手记 → AI 讨论 → 任务转化</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull">
+    <div class="q">Alice 是唯一在人格化上和 MoneyAI 同一条赛道的产品。</div>
+    <div class="c">差异在于：Alice 的人设是<strong>出厂设定</strong>（26岁横琴女生），走的是"为你定制的虚拟伙伴"路线。MoneyAI 的人设是<strong>你自己锻造的</strong>——Jimmy 锻造了「疯子」，你可以锻造你自己的。一个是你选她的性格，一个是她跟你长出来的性格。</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ═══════════ 08 · 模型供应商 ═══════════ -->
+<section>
+  <div class="sec-num">SECTION 08 · 模型供应商</div>
+  <div class="sec-title">12+ 供应商自由切换，不绑死任何一家</div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th style="width:14%">模型维度</th>
+          <th class="us" style="width:16%">🟣 MoneyAI</th>
+          <th style="width:14%">Alice</th>
+          <th style="width:10%">悟空</th>
+          <th style="width:10%">Qoder</th>
+          <th style="width:12%">AutoClaw</th>
+          <th style="width:8%">Codex</th>
+          <th style="width:8%">WorkBuddy</th>
+          <th style="width:8%">Marvis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim">供应商数量</td>
+          <td class="us-cell"><span class="badge y">12+ 内置</span><br><span class="badge tag">自定义 Provider 无限扩展</span></td>
+          <td><span class="badge y">23 服务商</span><br><span class="note">含本地模型</span></td>
+          <td>Qwen 系为主</td>
+          <td>Claude/GPT/Gemini</td>
+          <td>多模型中立</td>
+          <td>多后端</td>
+          <td>5 家</td>
+          <td>混元 + 路由</td>
+        </tr>
+        <tr>
+          <td class="dim">国内模型</td>
+          <td class="us-cell"><span class="badge y">✓ 全覆盖</span><br><span class="note">DeepSeek·智谱·MiniMax·Kimi·百炼·火山·硅基·OpenRouter·ZenMux</span></td>
+          <td><span class="badge y">✓ 全覆盖</span></td>
+          <td>Qwen</td>
+          <td><span class="badge p">有限</span></td>
+          <td><span class="badge y">✓</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓ 5家</span></td>
+          <td>混元</td>
+        </tr>
+        <tr>
+          <td class="dim">国际模型</td>
+          <td class="us-cell"><span class="badge y">✓ Claude·GPT·Gemini</span></td>
+          <td><span class="badge y">✓</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓</span></td>
+          <td><span class="badge p">有限</span></td>
+          <td><span class="badge y">✓</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+        </tr>
+        <tr>
+          <td class="dim">本地模型</td>
+          <td class="us-cell"><span class="badge y">✓</span> 通过自定义 Provider</td>
+          <td><span class="badge y">✓ LM Studio·Ollama</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓ Ollama</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓ 端侧模型</span></td>
+        </tr>
+        <tr>
+          <td class="dim">按场景指定模型</td>
+          <td class="us-cell"><span class="badge y">✓</span><br><span class="note">对话·记忆·代码·创作各用各的</span></td>
+          <td><span class="badge y">✓</span><br><span class="note">按场景分派</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓ 自动路由</span></td>
+          <td><span class="badge n">✗</span></td>
+          <td><span class="badge y">✓</span></td>
+          <td><span class="badge p">手动切换</span></td>
+          <td><span class="badge y">✓ 自动路由</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ═══════════ 09 · 综合能力光谱 ═══════════ -->
+<section>
+  <div class="sec-num">SECTION 09 · 综合评分</div>
+  <div class="sec-title">九个维度，一张表看到底</div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th style="width:11%">能力维度</th>
+          <th class="us" style="width:13%">🟣 MoneyAI</th>
+          <th style="width:13%">Alice</th>
+          <th style="width:13%">悟空</th>
+          <th style="width:13%">Qoder</th>
+          <th style="width:13%">AutoClaw</th>
+          <th style="width:9%">Codex</th>
+          <th style="width:9%">WorkBuddy</th>
+          <th style="width:6%">Marvis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim">代码能力</td>
+          <td class="us-cell"><span class="badge y">★★★★☆ 85</span></td>
+          <td><span class="badge p">★★★☆☆ 65</span></td>
+          <td><span class="badge y">★★★★☆ 83</span></td>
+          <td><span class="badge y">★★★★★ 92</span></td>
+          <td><span class="badge p">★★★☆☆ 68</span></td>
+          <td><span class="badge y">★★★★☆ 90</span></td>
+          <td><span class="badge p">★★★☆☆ 70</span></td>
+          <td><span class="badge n">★☆☆☆☆ 30</span></td>
         </tr>
         <tr>
           <td class="dim">办公文档</td>
-          <td class="us-cell"><span class="badge y">★★★★☆</span> 88<br><span class="note">全格式 · Agent 操作</span></td>
-          <td><span class="badge y">★★★★☆</span> 85<br><span class="note">OS 级文档处理</span></td>
-          <td><span class="badge y">★★★★★</span> 90<br><span class="note">核心场景 · 最强</span></td>
-          <td><span class="badge n">★☆☆☆☆</span> 20<br><span class="note">非办公定位</span></td>
-          <td><span class="badge n">★☆☆☆☆</span> 15<br><span class="note">纯编码 · 无办公</span></td>
+          <td class="us-cell"><span class="badge y">★★★★☆ 88</span></td>
+          <td><span class="badge y">★★★★☆ 85</span></td>
+          <td><span class="badge y">★★★★☆ 88</span></td>
+          <td><span class="badge n">★☆☆☆☆ 20</span></td>
+          <td><span class="badge p">★★★☆☆ 60</span></td>
+          <td><span class="badge n">★☆☆☆☆ 15</span></td>
+          <td><span class="badge y">★★★★★ 90</span></td>
+          <td><span class="badge y">★★★★☆ 85</span></td>
         </tr>
         <tr>
           <td class="dim">持久记忆</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 95<br><span class="note">四层蒸馏 · 独家</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge p">★☆☆☆☆</span> 15<br><span class="note">偏好层</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 95</span></td>
+          <td><span class="badge y">★★★★☆ 82</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 5</span></td>
+          <td><span class="badge p">★☆☆☆☆ 15</span></td>
+          <td><span class="badge p">★★☆☆☆ 35</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
         </tr>
         <tr>
           <td class="dim">情感认知</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 100<br><span class="note">PADCN · 独家</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 100</span></td>
+          <td><span class="badge p">★★☆☆☆ 30</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★☆☆☆☆ 10</span></td>
         </tr>
         <tr>
-          <td class="dim">自我进化</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 100<br><span class="note">达尔文引擎 · 独家</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
+          <td class="dim">自进化</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 100</span></td>
+          <td><span class="badge y">★★★★☆ 78</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★★☆☆☆ 30</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
         </tr>
         <tr>
           <td class="dim">人格系统</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 100<br><span class="note">4 文件 · 独家</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 100</span></td>
+          <td><span class="badge y">★★★★☆ 85</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+        </tr>
+        <tr>
+          <td class="dim">多模态创作</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 95</span></td>
+          <td><span class="badge p">★★☆☆☆ 25</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★★☆☆☆ 30</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★☆☆☆☆ 15</span></td>
         </tr>
         <tr>
           <td class="dim">IM 覆盖</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 95<br><span class="note">4 通道 · 原生对话</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge p">★★★☆☆</span> 55<br><span class="note">遥控非原生</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 95</span></td>
+          <td><span class="badge p">★★★☆☆ 60</span></td>
+          <td><span class="badge y">★★★★☆ 85</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★★★☆☆ 55</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★★★☆☆ 55</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
         </tr>
         <tr>
-          <td class="dim">定时任务</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 100<br><span class="note">Cron · 独家</span></td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-          <td><span class="badge n">☆☆☆☆☆</span> 0</td>
-        </tr>
-        <tr>
-          <td class="dim">多Agent架构</td>
-          <td class="us-cell"><span class="badge y">★★★★★</span> 95<br><span class="note">独立进程 · 独家</span></td>
-          <td><span class="badge p">★★☆☆☆</span> 35</td>
-          <td><span class="badge p">★★☆☆☆</span> 40</td>
-          <td><span class="badge n">★☆☆☆☆</span> 15</td>
-          <td><span class="badge n">★☆☆☆☆</span> 10</td>
+          <td class="dim">任务/定时</td>
+          <td class="us-cell"><span class="badge y">★★★★★ 95</span></td>
+          <td><span class="badge p">★★★☆☆ 50</span></td>
+          <td><span class="badge p">★★★☆☆ 55</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge p">★★☆☆☆ 35</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
+          <td><span class="badge n">☆☆☆☆☆ 0</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div style="background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:8px;padding:18px 22px;margin-top:20px;">
-    <span style="font-weight:700;color:var(--purple);">关键发现：</span>
-    <span style="color:var(--text2);">代码和办公层面，各家各有千秋——MoneyAI 不输、某些维度略逊于垂直产品。但在<strong style="color:var(--purple);">记忆、情感、自进化、人格</strong>这四个维度上，竞品得分全部为<strong style="color:var(--red);">零</strong>。这不是追不上的问题——是根本没上这条赛道。</span>
+  <div class="pull" style="margin-top:20px;">
+    <div class="q">看清了。代码/办公各有千秋——但记忆·情感·自进化·人格·创作，五个维度上 MoneyAI 是唯一的选手。</div>
+    <div class="c">Alice 在记忆和人格上是最接近的追赶者，悟空在办公和 IM 上有钉钉生态加持。但综合九个维度——<strong>没有第二家有 MoneyAI 的完整能力矩阵</strong>。</div>
   </div>
 </section>
 
@@ -791,15 +1141,17 @@
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
-  <div class="closing">
-    他们给你一个<em>工具</em>，我们给你一个<em>搭档</em>
+  <div class="close">
+    七家在做<em>工具</em>，一家的赛道是<em>搭档</em>
   </div>
   <div class="sub">
-    工具用完就放下。搭档记得你的偏好、你的脾气、你的凌晨两点。<br>
-    MoneyAI = 全能型个人 Agent，且具备所有竞品都没有的<strong style="color:var(--purple);">记忆 · 情感 · 人格 · 自进化</strong>四大核心能力。
+    Alice 是最接近的追赶者——人格化和记忆都很出色。<br>
+    悟空在钉钉体系内有企业级优势。Qoder 和 Codex 在纯编码场景是利器。<br>
+    但<strong style="color:var(--purple);">记忆 · 情感 · 自进化 · 人格 · 多模态创作 · 任务灵感</strong>这套完整矩阵——<br>
+    当前只有 MoneyAI 在认真做。
   </div>
   <div class="fine">
-    MoneyAI Agent v2.1.4 &nbsp;·&nbsp; 2026.06.08 &nbsp;·&nbsp; moneyai2026.com &nbsp;·&nbsp; github.com/hAcKlyc/MyAgents
+    MoneyAI Agent v2.1.4 · 2026.06 · moneyai2026.com
   </div>
 </footer>
 
